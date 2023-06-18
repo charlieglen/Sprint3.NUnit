@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "I6GmeEqy7W4n4gEnkp6vjQh6k9oVZ5Qoj8pIyCk/tbRopDbEqUP8f9x+XRJQVOta4CkRTKJDf6yKcqjREToj0w==",
+  "dgSpecHash": "eStGKpYhbdSm3j3h39PBj9p70yjzJNvnIZCrntfAxRnFBuD/Wjb3MPhW2pXsUKVbddJFiT3AUUdmUxcLNP+9kg==",
   "success": true,
-  "projectFilePath": "D:\\Industry Connect\\Internship\\Tasks\\MarsQASprint3.Nunit\\Sprint3.Nunit\\MarsFramework\\MarsFramework\\MarsFramework.csproj",
+  "projectFilePath": "D:\\Industry Connect\\Internship\\Tasks\\Sprint3.NUnit\\MarsFramework\\MarsFramework\\MarsFramework.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\charl\\.nuget\\packages\\dnsclient\\1.2.0\\dnsclient.1.2.0.nupkg.sha512",
     "C:\\Users\\charl\\.nuget\\packages\\dotnetseleniumextras.pageobjects\\3.11.0\\dotnetseleniumextras.pageobjects.3.11.0.nupkg.sha512",

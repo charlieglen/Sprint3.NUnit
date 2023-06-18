@@ -34,6 +34,7 @@ namespace MarsFramework.Global
             driver = new ChromeDriver();
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(ExcelLib.ReadData(2, "Link"));
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
             LoginPage loginobj = new LoginPage();
             loginobj.LogInActions();

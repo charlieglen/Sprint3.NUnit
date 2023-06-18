@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Industry Connect\\Internship\\Tasks\\MarsQASprint3.Nunit\\Sprint3.Nunit\\MarsFramework\\MarsFramework\\MarsFramework.csproj": {}
+    "D:\\Industry Connect\\Internship\\Tasks\\Sprint3.NUnit\\MarsFramework\\MarsFramework\\MarsFramework.csproj": {}
   },
   "projects": {
-    "D:\\Industry Connect\\Internship\\Tasks\\MarsQASprint3.Nunit\\Sprint3.Nunit\\MarsFramework\\MarsFramework\\MarsFramework.csproj": {
+    "D:\\Industry Connect\\Internship\\Tasks\\Sprint3.NUnit\\MarsFramework\\MarsFramework\\MarsFramework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Industry Connect\\Internship\\Tasks\\MarsQASprint3.Nunit\\Sprint3.Nunit\\MarsFramework\\MarsFramework\\MarsFramework.csproj",
+        "projectUniqueName": "D:\\Industry Connect\\Internship\\Tasks\\Sprint3.NUnit\\MarsFramework\\MarsFramework\\MarsFramework.csproj",
         "projectName": "MarsFramework",
-        "projectPath": "D:\\Industry Connect\\Internship\\Tasks\\MarsQASprint3.Nunit\\Sprint3.Nunit\\MarsFramework\\MarsFramework\\MarsFramework.csproj",
+        "projectPath": "D:\\Industry Connect\\Internship\\Tasks\\Sprint3.NUnit\\MarsFramework\\MarsFramework\\MarsFramework.csproj",
         "packagesPath": "C:\\Users\\charl\\.nuget\\packages\\",
-        "outputPath": "D:\\Industry Connect\\Internship\\Tasks\\MarsQASprint3.Nunit\\Sprint3.Nunit\\MarsFramework\\MarsFramework\\obj\\",
+        "outputPath": "D:\\Industry Connect\\Internship\\Tasks\\Sprint3.NUnit\\MarsFramework\\MarsFramework\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\charl\\AppData\\Roaming\\NuGet\\NuGet.Config",
