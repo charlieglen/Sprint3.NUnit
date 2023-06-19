@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Industry Connect\\Internship\\Tasks\\Sprint3.NUnit\\MarsFramework\\MarsFramework\\MarsFramework.csproj": {}
+    "C:\\Users\\Sheila\\source\\repos\\Advanced\\Sprint3.NUnit\\MarsFramework\\MarsFramework.csproj": {}
   },
   "projects": {
-    "D:\\Industry Connect\\Internship\\Tasks\\Sprint3.NUnit\\MarsFramework\\MarsFramework\\MarsFramework.csproj": {
+    "C:\\Users\\Sheila\\source\\repos\\Advanced\\Sprint3.NUnit\\MarsFramework\\MarsFramework.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Industry Connect\\Internship\\Tasks\\Sprint3.NUnit\\MarsFramework\\MarsFramework\\MarsFramework.csproj",
+        "projectUniqueName": "C:\\Users\\Sheila\\source\\repos\\Advanced\\Sprint3.NUnit\\MarsFramework\\MarsFramework.csproj",
         "projectName": "MarsFramework",
-        "projectPath": "D:\\Industry Connect\\Internship\\Tasks\\Sprint3.NUnit\\MarsFramework\\MarsFramework\\MarsFramework.csproj",
-        "packagesPath": "C:\\Users\\charl\\.nuget\\packages\\",
-        "outputPath": "D:\\Industry Connect\\Internship\\Tasks\\Sprint3.NUnit\\MarsFramework\\MarsFramework\\obj\\",
+        "projectPath": "C:\\Users\\Sheila\\source\\repos\\Advanced\\Sprint3.NUnit\\MarsFramework\\MarsFramework.csproj",
+        "packagesPath": "C:\\Users\\Sheila\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Sheila\\source\\repos\\Advanced\\Sprint3.NUnit\\MarsFramework\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\charl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Sheila\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -117,7 +117,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }

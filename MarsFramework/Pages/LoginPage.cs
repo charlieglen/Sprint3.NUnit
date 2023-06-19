@@ -21,11 +21,11 @@ namespace MarsFramework.Pages
         public void LogInActions()
         {
             signinButton.Click();
-            emailTextbox.SendKeys(ExcelLib.ReadData(2, "UserEmail"));
-            passwordTextbox.SendKeys(ExcelLib.ReadData(2, "Password"));
+            emailTextbox.SendKeys(ExcelLib.ReadData(4, "UserEmail"));
+            passwordTextbox.SendKeys(ExcelLib.ReadData(4, "Password"));
             rememberMeCheckbox.Click();
             loginButton.Click();
-            //changes
+            
         }
     }
 }
