@@ -25,6 +25,7 @@ namespace MarsFramework.Pages
             passwordTextbox.SendKeys(ExcelLib.ReadData(2, "Password"));
             rememberMeCheckbox.Click();
             loginButton.Click();
+            //changes
         }
     }
 }
