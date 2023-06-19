@@ -35,24 +35,25 @@ namespace MarsFramework.Global
                 }
 
             }
-        }
-        public static void WaitToBeClickable(IWebDriver driver, string locatorType, string locatorValue, int seconds)
-        {
-            var wait = new WebDriverWait(driver, new TimeSpan(0, 0, seconds));
 
-            if (locatorType == "XPath")
+            public static void WaitToBeClickable(IWebDriver driver, string locatorType, string locatorValue, int seconds)
             {
-                wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(locatorValue)));
-            }
-            if (locatorType == "Id")
-            {
-                wait.Until(ExpectedConditions.ElementToBeClickable(By.Id(locatorValue)));
-            }
-            if (locatorType == "CssSelector")
-            {
-                wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(locatorValue)));
-            }
+                var wait = new WebDriverWait(driver, new TimeSpan(0, 0, seconds));
 
+                if (locatorType == "XPath")
+                {
+                    wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(locatorValue)));
+                }
+                if (locatorType == "Id")
+                {
+                    wait.Until(ExpectedConditions.ElementToBeClickable(By.Id(locatorValue)));
+                }
+                if (locatorType == "CssSelector")
+                {
+                    wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(locatorValue)));
+                }
+
+            }
         }
         #endregion
 
