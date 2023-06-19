@@ -39,7 +39,7 @@ namespace MarsFramework.Global
             LoginPage loginobj = new LoginPage();
             loginobj.LogInActions();
 
-            Task.Delay(1500).Wait();
+            Task.Delay(3000).Wait();
             string currentURL = driver.Url;
             if (currentURL != "http://localhost:5000/Account/Profile")
             {

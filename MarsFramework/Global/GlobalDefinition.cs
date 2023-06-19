@@ -36,11 +36,29 @@ namespace MarsFramework.Global
 
             }
         }
-            #endregion
+        public static void WaitToBeClickable(IWebDriver driver, string locatorType, string locatorValue, int seconds)
+        {
+            var wait = new WebDriverWait(driver, new TimeSpan(0, 0, seconds));
 
-            #region Excel 
+            if (locatorType == "XPath")
+            {
+                wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(locatorValue)));
+            }
+            if (locatorType == "Id")
+            {
+                wait.Until(ExpectedConditions.ElementToBeClickable(By.Id(locatorValue)));
+            }
+            if (locatorType == "CssSelector")
+            {
+                wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(locatorValue)));
+            }
 
-            public class ExcelLib
+        }
+        #endregion
+
+        #region Excel 
+
+        public class ExcelLib
         {
             //Creating the collection we will use to store data 
             static List<Datacollection> dataCol = new List<Datacollection>();
