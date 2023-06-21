@@ -17,7 +17,7 @@ namespace MarsFramework.Global
         #region WaitforElement 
         public class Wait
         {
-            public static void WaitToBeVisible(IWebDriver driver, string locatorType, string locatorValue, int seconds)
+            public static void WaitToBeVisible(string locatorType, string locatorValue, int seconds)
             {
                 var wait = new WebDriverWait(driver, new TimeSpan(0, 0, seconds));
 
@@ -36,7 +36,7 @@ namespace MarsFramework.Global
 
             }
 
-            public static void WaitToBeClickable(IWebDriver driver, string locatorType, string locatorValue, int seconds)
+            public static void WaitToBeClickable(string locatorType, string locatorValue, int seconds)
             {
                 var wait = new WebDriverWait(driver, new TimeSpan(0, 0, seconds));
 

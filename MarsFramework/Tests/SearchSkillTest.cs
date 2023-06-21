@@ -15,31 +15,27 @@ namespace MarsFramework.Tests
         {
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
-            //try
-            //{
-            testRow = 2;
-            SearchSkillsPage searchSkillPageObj = new SearchSkillsPage();
+            try
+            {
+                testRow = 2;
+                SearchSkillsPage searchSkillPageObj = new SearchSkillsPage();
 
-            searchSkillPageObj.SearchSkillsHomePage();
-            //searchSkillPageObj.SearchSkillsFromResults();
-            searchSkillPageObj.ViewCategory();
-            searchSkillPageObj.ViewSubCategory();
-            //searchSkillPageObj.ViewHighestMatchCategory();
-            //searchSkillPageObj.ViewHighestMatchSubCategory();
+                searchSkillPageObj.SearchSkillsHomePage();
+                searchSkillPageObj.ViewCategory();
+                searchSkillPageObj.ViewSubCategory();
+                searchSkillPageObj.OpenSellerDetails();
+                bool searchSkillMatch = searchSkillPageObj.GetSkillTitleAndDescription();
+                Assert.That(searchSkillMatch == true);
+                test.Log(Status.Pass, "Passed, action successfull.");
 
-
-            //int number = searchSkillPageObj.ViewResultsByCategory();
-            //Console.WriteLine(number);
-            //Assert.That(status == "Accepted");
-            //test.Log(Status.Pass, "Passed, action successfull.");
+            }
+            catch (Exception ex)
+            {
+                test.Log(Status.Fail, "Failed, action unsuccessfull. Actual and Expected result did not match");
+                test.Log(Status.Info, ex.Message);
+            }
         }
-        //catch (Exception ex)
-        //{
-        //    test.Log(Status.Fail, "Failed, action unsuccessfull. Actual and Expected result did not match");
-        //    test.Log(Status.Info, ex.Message);
-        //}
-
-        //}
+   
         [Test, Order(2)]
         public void SearchUserFromResult()
         {
@@ -169,21 +165,7 @@ namespace MarsFramework.Tests
             }
 
         }
-        //[Test, Order(7)]
-        //public void NumberOfSearchResults()
-        //{
-        //    test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
-
-        //    testRow = 2;
-        //    SearchSkillsPage searchSkillPageObj = new SearchSkillsPage();
-
-        //    searchSkillPageObj.SearchSkillsHomePage();
-        //    searchSkillPageObj.ViewCategory();
-        //    int resultsNumber = searchSkillPageObj.GetNumberOfResults();
-        //    searchSkillPageObj.GetNumberOfResults();
-        //    Console.WriteLine(resultsNumber);
-
-        //}
+        
         [Test, Order(8)]
         public void NumberOfResultsPerPage()
         {
@@ -212,12 +194,6 @@ namespace MarsFramework.Tests
             }
 
         }
-        // search using numbers
-        // searh using special characters -- Should not be successful or 0 results as you can't use special characters in skill title or description
-        //search an empty user/skill
-        //search an empty char - must result to 0 search results -- can't be refined
-        //user try to go to previous page when they are on page 1
-        //user try to go to next page when they are on the last page
-
+      
     }
 }

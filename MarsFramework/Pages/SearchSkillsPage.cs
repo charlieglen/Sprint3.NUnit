@@ -32,6 +32,10 @@ namespace MarsFramework.Pages
         IWebElement searchResults => driver.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[1]/div/a[1]/span"));
         IWebElement SecondTolastPage => driver.FindElement(By.XPath("//*[@class=\"ui buttons semantic-ui-react-button-pagination\"]/button[last()-2]"));
         IWebElement lastPage => driver.FindElement(By.XPath("//*[@class=\"ui buttons semantic-ui-react-button-pagination\"]/button[last()-1]"));
+        IWebElement searchUserResult => driver.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[3]/div[1]/div/div[2]"));
+        IWebElement searchNotice => driver.FindElement(By.XPath("//*[@id=\"main-message\"]/h1/span"));
+        IWebElement searchResultAlert => driver.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[2]/div/h3"));
+
 
         List<IWebElement> resultsAsAString => new List<IWebElement>(driver.FindElements(By.XPath("//*[@class='item category']/*[@class='right-floated']")));
         List<IWebElement> resultsAsAStringSubcategory => new List<IWebElement>(driver.FindElements(By.XPath("//*[@class='item subcategory']/*[@class='right-floated']")));
@@ -50,27 +54,26 @@ namespace MarsFramework.Pages
         public void SearchUserFromResult()
         {
             searchUserTextArea.SendKeys(ExcelLib.ReadData(testRow, "SearchUser"));
-            Wait.WaitToBeClickable(driver, "XPath", "//span[text()='" + ExcelLib.ReadData(testRow, "SearchUser") + "']", 5);
+            Wait.WaitToBeClickable("XPath", "//span[text()='" + ExcelLib.ReadData(testRow, "SearchUser") + "']", 5);
             search.Click();
         }
 
         public string GetSellerName()
         {
-            Wait.WaitToBeVisible(driver, "XPath", "//*[@class=\"seller-info\"]", 5);
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"seller-info\"]", 5);
             return getSellerName.Text;
         }
 
         public void SearchSkillsFromResults()
         {
-            //Wait.WaitToBeVisible(driver, "XPath", "//*[@class=\"four wide column\"]/div[2]/input", 5);
-            Thread.Sleep(2000);
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"four wide column\"]/div[2]/input", 5);
             searchSkillsFromResults.SendKeys(ExcelLib.ReadData(testRow, "SearchBySkill"));
             searchIconFromResults.Click();
         }
 
         public void OpenSellerDetails()
         {
-            Wait.WaitToBeVisible(driver, "XPath", "//*[@class=\"ui stackable three cards\"]/div[1]/a[1]/img[1]", 5);
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"ui stackable three cards\"]/div[1]/a[1]/img[1]", 5);
             openSellerDetails.Click();
         }
         public bool GetSkillTitleAndDescription()
@@ -95,7 +98,7 @@ namespace MarsFramework.Pages
 
         public void ViewSubCategory()
         {
-            Thread.Sleep(1000);
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"item subcategory\" and contains(text(), '" + ExcelLib.ReadData(testRow, "SubCategory") + "' )]", 5);
             searchSubcategory.Click();
         }
 
@@ -159,7 +162,7 @@ namespace MarsFramework.Pages
 
         public string GetLocationType()
         {
-            Wait.WaitToBeVisible(driver, "XPath", "//*[@class=\"ui grid\"]/div[3]/div[1]/div[3]/div/div[2]", 5);
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"ui grid\"]/div[3]/div[1]/div[3]/div/div[2]", 5);
             return getLocationType.Text;
         }
 
@@ -170,7 +173,7 @@ namespace MarsFramework.Pages
         // verify total number of results
         public int GetActualNumberOfResults()
         {
-            Wait.WaitToBeVisible(driver, "XPath", "//*[@class=\"ui buttons semantic-ui-react-button-pagination\"]/button[last()-2]", 5);
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"ui buttons semantic-ui-react-button-pagination\"]/button[last()-2]", 5);
             int SecondTolastPageNumber;
             int.TryParse(SecondTolastPage.Text, out SecondTolastPageNumber);
             Console.WriteLine("Number of Pages with max number of displayed results: " + SecondTolastPageNumber);
@@ -192,7 +195,7 @@ namespace MarsFramework.Pages
         public int GetExpectedNumberOfResults()
         {
             //Thread.Sleep(1000);
-            Wait.WaitToBeVisible(driver, "XPath", "//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[1]/div/a[1]/span", 5);
+            Wait.WaitToBeVisible("XPath", "//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[1]/div[1]/div/a[1]/span", 5);
             int searchResultInt;
             int.TryParse(searchResults.Text, out searchResultInt);
             Console.WriteLine(searchResultInt);
@@ -201,17 +204,27 @@ namespace MarsFramework.Pages
 
         public int GetNumberOfResultsPerPage()
         {
-            //Wait.WaitToBeVisible(driver, "XPath", "//*[@class='seller-info']", 5);
+            //Wait.WaitToBeVisible("XPath", "//*[@class='seller-info']", 5);
             Thread.Sleep(1500);
             return numberOfResultsPerPage.Count;
-
         }
 
-        public string GetSearchResultAlert()
+        public string GetNotWorkingNotice()
         {
-            IWebElement searchResultAlert = driver.FindElement(By.XPath("//*[@id=\"service-search-section\"]/div[2]/div/section/div/div[2]/div/h3"));
+            return searchNotice.Text;
+        }
+
+        public string LocateSearchUserResultPanel()
+        {
+            searchUserTextArea.SendKeys(ExcelLib.ReadData(testRow, "SearchUser"));
+            return searchUserResult.GetAttribute("class");
+        }
+
+        public string SearchResultAlert()
+        {
             return searchResultAlert.Text;
         }
+
 
     }
 }

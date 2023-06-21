@@ -44,17 +44,17 @@ namespace MarsFramework.Pages
 
         public void ReceivedRequestsPage()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]", 5);
             manageRequestsDropdown.Click();
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]/div/a[1]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]/div/a[1]", 5);
             receivedRequestPage.Click();
         }
 
         public void SentRequestsPage()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]", 5);
             manageRequestsDropdown.Click();
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]/div/a[2]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@id=\"account-profile-section\"]/div/section[1]/div/div[1]/div/a[2]", 5);
             sentRequestPage.Click();
         }
         public void WithdrawRequest()
@@ -71,34 +71,37 @@ namespace MarsFramework.Pages
 
         public void AcceptRequest()
         {
+            Wait.WaitToBeVisible("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[8]/button[1]", 5);
             acceptRequest.Click();
         }
 
         public void DeclineRequest()
         {
+            Wait.WaitToBeVisible("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[8]/button[2]", 5);
             declineRequest.Click();
         }
 
         public string GetStatus()
         {
+            Wait.WaitToBeVisible("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[5]", 5);
             return getStatus.Text;
         }
 
         public string RequestsTitle()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]", 5);
             return requestTitle.Text;
         }
 
         public void ViewServiceDetail()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]/a", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[2]/a", 5);
             serviceDetail.Click();
         }
 
         public string ServiceDetailTitle()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@class=\"skill-title\"]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@class=\"skill-title\"]", 5);
             return serviceTitle.Text;
         }
 
@@ -110,7 +113,7 @@ namespace MarsFramework.Pages
 
         public string GetSenderURL()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[4]/a", 5);
             string urlSender = (senderURL.GetAttribute("href")).Substring(21);
             return urlSender;
 
@@ -125,13 +128,13 @@ namespace MarsFramework.Pages
         // Sort by Category
         public void SortByCategory()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@class=\"two wide\" and contains(text(), \"Category\")]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@class=\"two wide\" and contains(text(), \"Category\")]", 5);
             sortByCategory.Click();
         }
 
         public List<String> BeforeSortingCategory()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*/div[2]/div[1]/table/tbody/tr/td[1]", 5);
+            Wait.WaitToBeClickable("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[1]", 5);
             List<String> actualCategoryList = new List<string>();
 
             foreach (IWebElement categoryItem in categoryList)
@@ -159,13 +162,13 @@ namespace MarsFramework.Pages
         // Sort by Title
         public void SortByTitle()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@class=\"three wide\" and contains(text(), \"Title\")]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@class=\"three wide\" and contains(text(), \"Title\")]", 5);
             sortByTitle.Click();
         }
 
         public List<String> BeforeSortingTitle()
         {
-            Wait.WaitToBeVisible(driver, "XPath", "//*/div[2]/div[1]/table/tbody/tr/td[2]", 5);
+            Wait.WaitToBeVisible("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[2]", 5);
             List<String> actualTitleList = new List<string>();
 
             foreach (IWebElement titleItem in titleList)
@@ -192,13 +195,13 @@ namespace MarsFramework.Pages
         // Sort by Message
         public void SortByMessage()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@class=\"four wide\" and contains(text(), \"Message\")]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@class=\"four wide\" and contains(text(), \"Message\")]", 5);
             sortByMessage.Click();
         }
 
         public List<String> BeforeSortingMessage()
         {
-            Wait.WaitToBeVisible(driver, "XPath", "//*/div[2]/div[1]/table/tbody/tr/td[3]", 5);
+            Wait.WaitToBeVisible("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[3]", 5);
             List<String> actualMessageList = new List<string>();
 
             foreach (IWebElement messageItem in messageList)
@@ -224,13 +227,13 @@ namespace MarsFramework.Pages
         // Sort by Sender
         public void SortBySender()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@class=\"one wide\" and contains(text(), \"Sender\")]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@class=\"one wide\" and contains(text(), \"Sender\")]", 5);
             sortBySender.Click();
         }
 
         public List<String> BeforeSortingSender()
         {
-            Wait.WaitToBeVisible(driver, "XPath", "//*/div[2]/div[1]/table/tbody/tr/td[4]", 5);
+            Wait.WaitToBeVisible("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[4]", 5);
             List<String> actualSenderList = new List<string>();
 
             foreach (IWebElement senderItem in senderList)
@@ -257,13 +260,13 @@ namespace MarsFramework.Pages
         // Sort by Recepient
         public void SortByRecepient()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@class=\"two wide\" and contains(text(), \"Recipient\")]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@class=\"two wide\" and contains(text(), \"Recipient\")]", 5);
             sortByRecepient.Click();
         }
 
         public List<String> BeforeSortingRecepient()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*/div[2]/div[1]/table/tbody/tr/td[4]", 5);
+            Wait.WaitToBeClickable("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[4]", 5);
             List<String> actualRecepientList = new List<string>();
 
             foreach (IWebElement senderItem in recepientList)
@@ -290,13 +293,13 @@ namespace MarsFramework.Pages
         // Sort by Status
         public void SortByStatus()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@class=\"two wide\" and contains(text(), \"Status\")]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@class=\"two wide\" and contains(text(), \"Status\")]", 5);
             sortByStatus.Click();
         }
 
         public List<String> BeforeSortingStatus()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*/div[2]/div[1]/table/tbody/tr/td[5]", 5);
+            Wait.WaitToBeClickable("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[5]", 5);
             List<String> actualStatusList = new List<string>();
 
             foreach (IWebElement statusItem in statusList)
@@ -331,13 +334,13 @@ namespace MarsFramework.Pages
         // Sort by Type
         public void SortByType()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*[@class=\"one wide\" and contains(text(), \"Type\")]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@class=\"one wide\" and contains(text(), \"Type\")]", 5);
             sortByType.Click();
         }
 
         public List<String> BeforeSortingType()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*/div[2]/div[1]/table/tbody/tr/td[6]", 5);
+            Wait.WaitToBeClickable("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[6]", 5);
             List<String> actualTypeList = new List<string>();
 
             foreach (IWebElement typeItem in typeList)
@@ -365,13 +368,13 @@ namespace MarsFramework.Pages
         // Sort by Date
         public void SortByDate()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*/div[2]/div[1]/table/thead/tr/th[7]", 5);
+            Wait.WaitToBeClickable("XPath", "//*/div[2]/div[1]/table/thead/tr/th[7]", 5);
             sortByDate.Click();
         }
 
         public List<String> BeforeSortingDate()
         {
-            Wait.WaitToBeClickable(driver, "XPath", "//*/div[2]/div[1]/table/tbody/tr/td[7]", 5);
+            Wait.WaitToBeClickable("XPath", "//*/div[2]/div[1]/table/tbody/tr/td[7]", 5);
             List<String> actualDateList = new List<string>();
 
             foreach (IWebElement dateItem in dateList)

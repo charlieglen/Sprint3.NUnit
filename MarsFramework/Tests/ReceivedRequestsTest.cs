@@ -71,9 +71,8 @@ namespace MarsFramework.Tests
             try
             {
                 ManageRequestsPage manageRequestsObj = new ManageRequestsPage();
-                manageRequestsObj.ReceivedRequestsPage();
                 manageRequestsObj.RequestDetailAndRating();
-                //manageRequestsObj.AcceptRequest();
+                manageRequestsObj.AcceptRequest();
                 string status = manageRequestsObj.GetStatus();
                 Assert.That(status == "Accepted");
                 test.Log(Status.Pass, "Passed, action successfull.");
@@ -92,9 +91,9 @@ namespace MarsFramework.Tests
             try
             {
                 ManageRequestsPage manageRequestsObj = new ManageRequestsPage();
+                manageRequestsObj.ReceivedRequestsPage();
+                //manageRequestsObj.SortByStatus();
                 manageRequestsObj.DeclineRequest();
-                manageRequestsObj.RequestDetailAndRating();
-                //manageRequestsObj.AcceptRequest();
                 string status = manageRequestsObj.GetStatus();
                 Assert.That(status == "Declined");
                 test.Log(Status.Pass, "Passed, action successfull.");
