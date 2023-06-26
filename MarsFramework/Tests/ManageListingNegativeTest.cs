@@ -7,7 +7,7 @@ using System.Reflection;
 namespace MarsFramework.Tests
 {
     [TestFixture]
-    public class NegativeTest : Base
+    public class ManageListingNegativeTest : Base
     {
 
         [Test, Order(2)]
