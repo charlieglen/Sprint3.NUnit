@@ -42,13 +42,8 @@ namespace MarsFramework.Tests
             {
                 ManageRequestsPage manageRequestsObj = new ManageRequestsPage();
                 manageRequestsObj.ReceivedRequestsPage();
-                //manageRequestsObj.RequestDetailAndRating();
-                //manageRequestsObj.AcceptRequest();
                 string senderURL = manageRequestsObj.GetSenderURL();
                 manageRequestsObj.ViewSenderProfile();
-
-                //string status = manageRequestsObj.GetStatus();
-                //Assert.That(status == "Accepted");
                 string currentURL = manageRequestsObj.GetPageURL();
                 Console.WriteLine(senderURL);
                 Console.WriteLine(currentURL);
@@ -92,7 +87,6 @@ namespace MarsFramework.Tests
             {
                 ManageRequestsPage manageRequestsObj = new ManageRequestsPage();
                 manageRequestsObj.ReceivedRequestsPage();
-                //manageRequestsObj.SortByStatus();
                 manageRequestsObj.DeclineRequest();
                 string status = manageRequestsObj.GetStatus();
                 Assert.That(status == "Declined");

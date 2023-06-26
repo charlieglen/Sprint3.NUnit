@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using static MarsFramework.Global.GlobalDefinitions;
 using MarsFramework.Global;
+using System.Threading.Tasks;
 
 namespace MarsFramework.Pages
 {
@@ -83,7 +84,8 @@ namespace MarsFramework.Pages
 
         public string GetStatus()
         {
-            Wait.WaitToBeVisible("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[5]", 5);
+            //Wait.WaitToBeVisible("XPath", "//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[1]/td[5]", 5);
+            Task.Delay(2000).Wait();
             return getStatus.Text;
         }
 
@@ -313,18 +315,11 @@ namespace MarsFramework.Pages
         public List<String> AfterSortingStatus()
         {
             List<String> sortedStatusList = new List<string>();
-            //{
-            //    "Pending" , "Accepted", "Declined", "Completed"
-            //};
+           
 
             foreach (IWebElement statusItem in statusList)
             {
-                //sortedStatusList.Add(statusItem.Text);
                 sortedStatusList.Sort();
-                //sortedStatusList.Reverse();
-                //sortedStatusList.Add(statusItem.Text);
-                //orderedlist = sortedStatusList.OrderBy("Pending", "Accepted", "Declined", "Completed").ToList();
-                //sortedStatusList = sortedStatusList.OrderBy(x => x, new ReversedComparer()).ToList();
             }
 
             Console.WriteLine(string.Join(" | ", sortedStatusList));
@@ -363,7 +358,6 @@ namespace MarsFramework.Pages
             Console.WriteLine(string.Join(" | ", sortedTypeList));
             return sortedTypeList;
         }
-
 
         // Sort by Date
         public void SortByDate()
@@ -409,26 +403,6 @@ namespace MarsFramework.Pages
             senderDetails.Click();
 
         }
-
-
-
-
-
-
-
-
-        //IWebElement nextPageIcon = driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/div/button[4]"));
-        //IWebElement previousPageIcon = driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/div/button[1]"));
-        //IWebElement lastRequest = driver.FindElement(By.XPath("//*[@id=\"received-request-section\"]/div[2]/div[1]/table/tbody/tr[last()]/td[1]"));
-
-
-        /* Create dummy accounts
-         * test in multiple browsers
-         * check how to verify sorting
-         * assert using a different browser or account
-         */
-
-
 
     }
 }

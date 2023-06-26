@@ -73,11 +73,13 @@ namespace MarsFramework.Pages
 
         public void OpenSellerDetails()
         {
-            Wait.WaitToBeVisible("XPath", "//*[@class=\"ui stackable three cards\"]/div[1]/a[1]/img[1]", 5);
+            Wait.WaitToBeClickable("XPath", "//*[@class=\"ui stackable three cards\"]/div[1]/a[1]/img[1]", 5);
+            //Thread.Sleep(1000);
             openSellerDetails.Click();
         }
         public bool GetSkillTitleAndDescription()
         {
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"ui button\" and contains(text(), \"ShowAll\")]", 5);
 
             if (skillTitle.Text.Contains(ExcelLib.ReadData(testRow, "SearchBySkill"), StringComparison.OrdinalIgnoreCase))
             {
@@ -93,6 +95,7 @@ namespace MarsFramework.Pages
 
         public void ViewCategory()
         {
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"item category\" and contains(text(), '" + ExcelLib.ReadData(testRow, "Category") + "')]", 5);
             searchCategory.Click();
         }
 
@@ -147,16 +150,20 @@ namespace MarsFramework.Pages
         //Filter
         public void FilterOnline()
         {
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"ui button\" and contains(text(), \"Online\")]", 5);
             filterOnline.Click();
         }
 
         public void FilterOnsite()
         {
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"ui button\" and contains(text(), \"Onsite\")]", 5);
             filterOnsite.Click();
+            Task.Delay(1000).Wait();
         }
 
         public void FilterShowAll()
         {
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"ui button\" and contains(text(), \"ShowAll\")]", 5);
             filterShowAll.Click();
         }
 
@@ -168,6 +175,7 @@ namespace MarsFramework.Pages
 
         public void ResultsPerPage()
         {
+            Wait.WaitToBeVisible("XPath", "//*[@class=\"right floated column \"]/button[3]", 5);
             resultsPerPage18.Click();
         }
         // verify total number of results
@@ -204,8 +212,8 @@ namespace MarsFramework.Pages
 
         public int GetNumberOfResultsPerPage()
         {
-            //Wait.WaitToBeVisible("XPath", "//*[@class='seller-info']", 5);
-            Thread.Sleep(1500);
+            Wait.WaitToBeVisible("XPath", "//*[@class='seller-info']", 5);
+            //Thread.Sleep(1500);
             return numberOfResultsPerPage.Count;
         }
 
@@ -224,7 +232,5 @@ namespace MarsFramework.Pages
         {
             return searchResultAlert.Text;
         }
-
-
     }
 }

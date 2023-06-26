@@ -23,6 +23,7 @@ namespace MarsFramework.Tests
                 searchSkillPageObj.SearchSkillsHomePage();
                 searchSkillPageObj.ViewCategory();
                 searchSkillPageObj.ViewSubCategory();
+                //searchSkillPageObj.SearchUserFromResult();
                 searchSkillPageObj.OpenSellerDetails();
                 bool searchSkillMatch = searchSkillPageObj.GetSkillTitleAndDescription();
                 Assert.That(searchSkillMatch == true);
@@ -166,23 +167,19 @@ namespace MarsFramework.Tests
 
         }
         
-        [Test, Order(8)]
+        [Test, Order(7)]
         public void NumberOfResultsPerPage()
         {
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
             try
             {
-                test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
-
                 testRow = 2;
                 SearchSkillsPage searchSkillPageObj = new SearchSkillsPage();
-
                 searchSkillPageObj.SearchSkillsHomePage();
                 searchSkillPageObj.ResultsPerPage();
                 int resultsPerPage = searchSkillPageObj.GetNumberOfResultsPerPage();
                 Console.WriteLine(resultsPerPage);
-
                 Assert.That(resultsPerPage == 18);
                 test.Log(Status.Pass, "Passed, action successfull.");
 

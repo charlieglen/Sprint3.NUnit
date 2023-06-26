@@ -72,7 +72,7 @@ namespace MarsFramework.Pages
 
         public void ShareSkill()
         {
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             shareSkillButton.Click();
         }
 
