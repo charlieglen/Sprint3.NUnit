@@ -72,17 +72,24 @@ namespace MarsFramework.Pages
         //Click Save Description
         IWebElement SaveDescription => driver.FindElement(By.XPath("(//BUTTON[@class='ui teal button'][text()='Save'])[2]"));
 
-        //Click on Add new to add new Language
-        IWebElement AddNewLangBtn => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/table/thead/tr/th[3]/div"));
+        //Click on Languages Tab
+        IWebElement LanguagesTab => driver.FindElement(By.XPath("//A[@class='item active'][text()='Languages']"));
+
+
+        //Click on Add new button to add new Language
+        IWebElement AddNewLanguageBtn => driver.FindElement(By.XPath("(//DIV[@class='ui teal button '][text()='Add New'])[1]"));
 
         //Enter the Language on text box
-        IWebElement AddLangText => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/div/div[1]/input"));
+        IWebElement AddLanguageName => driver.FindElement(By.XPath("(//INPUT[@type='text'])[4]"));
 
-        //Enter the Language on text box
-        IWebElement ChooseLang => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/div/div[2]/select"));
+        //Click language level dropdown button
+        IWebElement LanguageLevelBtn => driver.FindElement(By.XPath("//SELECT[@class='ui dropdown']"));
 
-        //Enter the Language on text box
-        IWebElement ChooseLangOpt => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/div/div[2]/select/option[3]"));
+        //Click Add button to save new language
+        IWebElement SaveLanguageBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[1]"));
+
+        //Click Cancel button to cancel new language entry
+        IWebElement CancelLanguageBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[2]"));
 
         //Add Language
         IWebElement LasAddLangtName => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/div/div[3]/input[1]"));
@@ -282,21 +289,44 @@ namespace MarsFramework.Pages
             return notificationMessage;
         }
 
-        /*
-                    //---------------------------------------------------------
-                    //Click on Add New Language button
-                    AddNewLangBtn.Click();
-                    Thread.Sleep(1000);
-                    //Enter the Language
-                    AddLangText.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Language"));
+        public void ClickLanguageTab()
+        {
+            Thread.Sleep(500);
+            LanguagesTab.Click();
+        }
 
-                    //Choose Lang
-                    ChooseLang.Click();
-                    Thread.Sleep(1000);
-                    ChooseLangOpt.Click();
-                    Thread.Sleep(500);
-                    AddLang.Click();
-                    Base.test.Log(LogStatus.Info, "Added Language successfully");
+        public void AddNewLanguage(string lang, string level, string action)
+        {
+            //Click Langauge Tab
+            ClickLanguageTab();
+
+            //Click on Add New Language button
+            Thread.Sleep(500);
+            AddNewLanguageBtn.Click();
+            Thread.Sleep(1000);
+            //Enter the Language
+            AddLanguageName.SendKeys(lang);
+
+            //Set Language Level
+            Thread.Sleep(500);
+            LanguageLevelBtn.Click();
+            Thread.Sleep(1000);
+            SelectElement selectedLevel = new SelectElement(LanguageLevelBtn);
+            selectedLevel.SelectByValue(level);
+            Thread.Sleep(500);
+            if (action == "Save")
+                SaveLanguageBtn.Click();
+            else
+                CancelLanguageBtn.Click();
+            
+            Thread.Sleep(500);
+
+            notificationMessage = NotificationMesssage.Text;            
+
+        }
+
+        /*
+                    
 
                     //-----------------------------------------------------------
                     //Click on Add New Skill Button
