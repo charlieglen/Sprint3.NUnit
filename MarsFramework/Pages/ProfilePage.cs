@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static MarsFramework.Global.GlobalDefinitions;
 using AventStack.ExtentReports;
+using System.Reflection.Emit;
 
 namespace MarsFramework.Pages
 {
@@ -16,7 +17,7 @@ namespace MarsFramework.Pages
     {
         public ProfilePage()
         {
-            ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
+           // ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
         }
       
         #region  Find Elements
@@ -75,7 +76,6 @@ namespace MarsFramework.Pages
         //Click on Languages Tab
         IWebElement LanguagesTab => driver.FindElement(By.XPath("//A[@class='item active'][text()='Languages']"));
 
-
         //Click on Add new button to add new Language
         IWebElement AddNewLanguageBtn => driver.FindElement(By.XPath("(//DIV[@class='ui teal button '][text()='Add New'])[1]"));
 
@@ -91,77 +91,72 @@ namespace MarsFramework.Pages
         //Click Cancel button to cancel new language entry
         IWebElement CancelLanguageBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[2]"));
 
-        //Add Language
-        IWebElement LasAddLangtName => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[3]/div/div[2]/div/div/div[3]/input[1]"));
+        //Click on Skills Tab
+        IWebElement SkillsTab => driver.FindElement(By.XPath("//A[@class='item active'][text()='Skills']"));
 
         //Click on Add new to add new skill
-        IWebElement AddNewSkillBtn => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[4]/div/div[2]/div/table/thead/tr/th[3]/div"));
+        IWebElement AddNewSkillBtn => driver.FindElement(By.XPath("//DIV[@class='ui teal button'][text()='Add New']"));
 
         //Enter the Skill on text box
-        IWebElement AddSkillText => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[4]/div/div[2]/div/div/div[1]/input"));
+        IWebElement AddSkillName => driver.FindElement(By.XPath("(//INPUT[@type='text'])[4]"));
 
         //Click on skill level dropdown
-        IWebElement ChooseSkill => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[4]/div/div[2]/div/div/div[2]/select"));
-
-        //Choose the skill level option
-        IWebElement ChooseSkilllevel => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[4]/div/div[2]/div/div/div[2]/select/option[3]"));
-
+        IWebElement SkillLevelBtn => driver.FindElement(By.XPath("//SELECT[@class='ui fluid dropdown']"));
+                
         //Add Skill
-        IWebElement AddSkill => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[4]/div/div[2]/div/div/span/input[1]"));
+        IWebElement SaveSkillBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[1]"));
 
-        //Click on Add new to Educaiton
-        IWebElement AddNewEducation => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/table/thead/tr/th[6]/div"));
+        //Click Cancel button to cancel new skill entry
+        IWebElement CancelSkillBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[2]"));
+
+        //Click on Education Tab
+        IWebElement EducationTab => driver.FindElement(By.XPath("//A[@class='item active'][text()='Education']"));
+
+        //Click on Add new to Education
+        IWebElement AddNewEducationBtn => driver.FindElement(By.XPath("(//DIV[@class='ui teal button '])[1]"));
 
         //Enter university in the text box
-        IWebElement EnterUniversity => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[1]/div[1]/input"));
+        IWebElement EnterUniversityName => driver.FindElement(By.XPath("(//INPUT[@type='text'])[4]"));
 
-        //Choose the country
-        IWebElement ChooseCountry => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[1]/div[2]/select"));
-
-        //Choose the skill level option
-        IWebElement ChooseCountryOpt => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[1]/div[2]/select/option[6]"));
-
+        //Choose the Country dropdown
+        IWebElement ChooseCountryBtn => driver.FindElement(By.XPath("(//SELECT[@class='ui dropdown'])[1]"));
+               
         //Click on Title dropdown
-        IWebElement ChooseTitle => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[2]/div[1]/select"));
-
-        //Choose title
-        IWebElement ChooseTitleOpt => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[2]/div[1]/select/option[5]"));
-
+        IWebElement ChooseTitleBtn => driver.FindElement(By.XPath("(//SELECT[@class='ui dropdown'])[2]"));
+               
         //Degree
-        IWebElement Degree => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[2]/div[2]/input"));
+        IWebElement Degree => driver.FindElement(By.XPath("(//INPUT[@type='text'])[5]"));
 
         //Year of graduation
-        IWebElement DegreeYear => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[2]/div[3]/select"));
+        IWebElement DegreeYear => driver.FindElement(By.XPath("(//SELECT[@class='ui dropdown'])[3]"));
+               
+        //Click on Add Education details button
+        IWebElement SaveEducationBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[1]"));
 
-        //Choose Year
-        IWebElement DegreeYearOpt => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[2]/div[3]/select/option[4]"));
+        //Click Cancel button to cancel new education entry
+        IWebElement CancelEducationBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[2]"));
 
-        //Click on Add
-        IWebElement AddEdu => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[5]/div/div[2]/div/div/div[3]/div/input[1]"));
+        //Click on Education Tab
+        IWebElement CertificationsTab => driver.FindElement(By.XPath("//A[@class='item'][text()='Certifications']"));
 
-        //Add new Certificate
-        IWebElement AddNewCerti => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/table/thead/tr/th[4]/div"));
+        //Click Add new Certification button
+        IWebElement AddNewCertificationBtn => driver.FindElement(By.XPath("(//DIV[@class='ui teal button '][text()='Add New'])[2]"));
 
-        //Enter Certification Name
-        IWebElement EnterCerti => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/div/div[1]/div/input"));
+        //Enter Certificate Name
+        IWebElement EnterCerticateName => driver.FindElement(By.XPath("(//INPUT[@type='text'])[4]"));
 
-        //Certified from
-        IWebElement CertiFrom => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/div/div[2]/div[1]/input"));
+        //enter Certified from
+        IWebElement CertifiedFrom => driver.FindElement(By.XPath("(//INPUT[@type='text'])[5]"));
 
-        //Year
-        IWebElement CertiYear => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/div/div[2]/div[2]/select"));
+        //Enter Year Certified
+        IWebElement YearCertified => driver.FindElement(By.XPath("//SELECT[@class='ui fluid dropdown']"));
+                
+        //Click Add Ceritification details
+        IWebElement SaveCertificateBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[1]"));
 
-        //Choose Opt from Year
-        IWebElement CertiYearOpt => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/div/div[2]/div[2]/select/option[5]"));
+        //Click Cancel button to cancel new certification entry
+        IWebElement CancelCertificateBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[2]"));
 
-        //Add Ceritification
-        IWebElement AddCerti => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[6]/div/div[2]/div/div/div[3]/input[1]"));
-
-        //Add Desctiption
-        IWebElement Description => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[8]/div/div[2]/div[1]/textarea"));
-
-        //Click on Save Button
-        IWebElement Save => driver.FindElement(By.XPath("//*[@id='account-profileEdit-section']/div/section[2]/div/div/div/form/div[8]/div/div[4]/span/button[1]"));
 
         //Current Profile Description
         IWebElement CurrentDescription => driver.FindElement(By.XPath("(//SPAN)[16]"));
@@ -287,18 +282,13 @@ namespace MarsFramework.Pages
         public string GetNotificationMessage()
         {
             return notificationMessage;
-        }
-
-        public void ClickLanguageTab()
-        {
-            Thread.Sleep(500);
-            LanguagesTab.Click();
-        }
+        }        
 
         public void AddNewLanguage(string lang, string level, string action)
         {
-            //Click Langauge Tab
-            ClickLanguageTab();
+            //Click Language Tab
+            Thread.Sleep(500);
+            LanguagesTab.Click();
 
             //Click on Add New Language button
             Thread.Sleep(500);
@@ -314,6 +304,8 @@ namespace MarsFramework.Pages
             SelectElement selectedLevel = new SelectElement(LanguageLevelBtn);
             selectedLevel.SelectByValue(level);
             Thread.Sleep(500);
+
+            //Click action
             if (action == "Save")
                 SaveLanguageBtn.Click();
             else
@@ -325,76 +317,119 @@ namespace MarsFramework.Pages
 
         }
 
-        /*
-                    
 
-                    //-----------------------------------------------------------
-                    //Click on Add New Skill Button
-                    AddNewSkillBtn.Click();
-                    //Enter the skill 
-                    AddSkillText.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Skill"));
+        public void AddNewSkill(string skill, string level, string action)
+        {
+            //Click Skills Tab
+            Thread.Sleep(500);
+            SkillsTab.Click();
 
-                    //Click the skill dropdown
-                    ChooseSkill.Click();
-                    Thread.Sleep(500);
-                    ChooseSkilllevel.Click();
-                    AddSkill.Click();
-                    Thread.Sleep(500);
-                    Base.test.Log(LogStatus.Info, "Added Skills successfully");
+            //Click on Add New Skill Button
+            AddNewSkillBtn.Click();
+            //Enter the skill 
+            AddSkillName.SendKeys(skill);
 
-                    //---------------------------------------------------------
-                    //Add Education
-                    AddNewEducation.Click();
-                    //Enter the University
-                    EnterUniversity.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "University"));
+            //Click the skill level dropdown
+            Thread.Sleep(500);
+            SkillLevelBtn.Click();
+            Thread.Sleep(1000);
+            SelectElement selectedLevel = new SelectElement(SkillLevelBtn);
+            selectedLevel.SelectByValue(level);
+            Thread.Sleep(500);
+            
+            //Click action
+            if (action == "Save")
+                SaveSkillBtn.Click();
+            else
+                CancelSkillBtn.Click();
 
-                    //Choose Country
-                    ChooseCountry.Click();
-                    Thread.Sleep(500);
-                    //Choose Country Level
-                    ChooseCountryOpt.Click();
+            Thread.Sleep(500);
+            notificationMessage = NotificationMesssage.Text;
+        }
 
-                    //Choose Title
-                    ChooseTitle.Click();
-                    Thread.Sleep(500);
-                    ChooseTitleOpt.Click();
+        public void AddNewEducation(string university, string country, string title, string degree, string degreeYear, string action)
+        {
+            //Click Skills Tab
+            Thread.Sleep(500);
+            EducationTab.Click();
 
-                    //Enter Degree
-                    Degree.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Degree"));
+            //Click Add Education button
+            AddNewEducationBtn.Click();
+            //Enter the University
+            EnterUniversityName.SendKeys(university);
 
-                    //Year of Graduation
-                    DegreeYear.Click();
-                    Thread.Sleep(500);
-                    DegreeYearOpt.Click();
-                    AddEdu.Click();
-                    Thread.Sleep(500);
-                    Base.test.Log(LogStatus.Info, "Added Education successfully");
+            //Choose Country
+            Thread.Sleep(500);
+            ChooseCountryBtn.Click();
+            Thread.Sleep(1000);
+            SelectElement selectedCountry = new SelectElement(ChooseCountryBtn);
+            selectedCountry.SelectByValue(country);
 
-                    //-------------------------------------------------
-                    //Add new Certificate
-                    AddNewCerti.Click();
+            //Choose Title
+            Thread.Sleep(500);
+            ChooseTitleBtn.Click();
+            Thread.Sleep(1000);
+            SelectElement selectedTitle= new SelectElement(ChooseTitleBtn);
+            selectedTitle.SelectByValue(title);
 
-                    //Enter Certificate Name
-                    EnterCerti.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Certificate"));
+            //Enter Degree
+            Thread.Sleep(500);
+            Degree.SendKeys(degree);
 
-                    //Enter Certified from
-                    CertiFrom.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "CertifiedFrom"));
+            //Year of Graduation
+            Thread.Sleep(500);
+            DegreeYear.Click();
+            Thread.Sleep(1000);
+            SelectElement selectedYear = new SelectElement(DegreeYear);
+            selectedYear.SelectByValue(degreeYear);
 
-                    //Enter the Year
-                    CertiYear.Click();
-                    Thread.Sleep(500);
-                    CertiYearOpt.Click();
-                    AddCerti.Click();
-                    Thread.Sleep(500);
-                    Base.test.Log(LogStatus.Info, "Added Certificate successfully");
+            //Click action
+            Thread.Sleep(500);
+            if (action == "Save")
+                SaveEducationBtn.Click();
+            else
+                CancelEducationBtn.Click();
 
-                    //-----------------------------------------------------
-                    //Add Description
-                    Description.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "Description"));
-                    Thread.Sleep(500);
-                    Save.Click();
-                    Base.test.Log(LogStatus.Info, "Added Description successfully");
-        */
+            Thread.Sleep(500);
+            notificationMessage = NotificationMesssage.Text;
+        }
 
+        public void AddNewCertificate(string certName, string certFrom, string yearCert, string action)
+        {
+            //Click Skills Tab
+            Thread.Sleep(500);
+            CertificationsTab.Click();
+
+            //Add new Certificate button
+            Thread.Sleep(500);
+            AddNewCertificationBtn.Click();
+
+            //Enter Certificate Name
+            Thread.Sleep(500);
+            EnterCerticateName.SendKeys(certName);
+
+            //Enter Certified from
+            Thread.Sleep(500);
+            CertifiedFrom.SendKeys(certFrom);
+
+            //Enter the Year Certified
+            Thread.Sleep(500);
+            YearCertified.Click();
+            Thread.Sleep(1000);
+            SelectElement selectedYear = new SelectElement(YearCertified);
+            selectedYear.SelectByValue(yearCert);
+
+            //Click action
+            Thread.Sleep(500);
+            if (action == "Save")
+                SaveEducationBtn.Click();
+            else
+                CancelEducationBtn.Click();
+
+            Thread.Sleep(500);
+            notificationMessage = NotificationMesssage.Text;
+
+        }
+       
     }
 }
