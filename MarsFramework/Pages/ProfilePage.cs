@@ -282,7 +282,7 @@ namespace MarsFramework.Pages
         public string GetNotificationMessage()
         {
             return notificationMessage;
-        }        
+        }
 
         public void AddNewLanguage(string lang, string level, string action)
         {
@@ -290,31 +290,36 @@ namespace MarsFramework.Pages
             Thread.Sleep(500);
             LanguagesTab.Click();
 
-            //Click on Add New Language button
-            Thread.Sleep(500);
-            AddNewLanguageBtn.Click();
-            Thread.Sleep(1000);
-            //Enter the Language
-            AddLanguageName.SendKeys(lang);
+            if (AddNewLanguageBtn.Displayed) { 
+                //Click on Add New Language button
+                Thread.Sleep(500);
+                AddNewLanguageBtn.Click();
 
-            //Set Language Level
-            Thread.Sleep(500);
-            LanguageLevelBtn.Click();
-            Thread.Sleep(1000);
-            SelectElement selectedLevel = new SelectElement(LanguageLevelBtn);
-            selectedLevel.SelectByValue(level);
-            Thread.Sleep(500);
+                Thread.Sleep(1000);
+                //Enter the Language
+                AddLanguageName.SendKeys(lang);
 
-            //Click action
-            if (action == "Save")
-                SaveLanguageBtn.Click();
-            else
-                CancelLanguageBtn.Click();
-            
-            Thread.Sleep(500);
+                //Set Language Level
+                Thread.Sleep(500);
+                LanguageLevelBtn.Click();
+                Thread.Sleep(1000);
+                SelectElement selectedLevel = new SelectElement(LanguageLevelBtn);
+                selectedLevel.SelectByValue(level);
+                Thread.Sleep(500);
 
-            notificationMessage = NotificationMesssage.Text;            
+                //Click action
+                if (action == "Save")
+                    SaveLanguageBtn.Click();
+                else
+                    CancelLanguageBtn.Click();
 
+                Thread.Sleep(1000);
+
+                notificationMessage = NotificationMesssage.Text;
+            }
+            else {
+                notificationMessage = "List is full. Only 4 languages are required.";
+            }
         }
 
 

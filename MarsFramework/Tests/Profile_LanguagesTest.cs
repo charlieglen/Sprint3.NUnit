@@ -41,7 +41,11 @@ namespace MarsFramework.Tests
                     test.Log(Status.Pass, "Passed, " + expectedLanguage + " has been added to your languages");
                 }
                 else {
-                    if (message == "This language is already exist in your language list.")
+                    if(message== "List is full. Only 4 languages are required.")
+                    {
+                        Assert.That(message == "List is full. Only 4 languages are required.", message);
+                    }
+                    else if (message == "This language is already exist in your language list.")
                         Assert.That(message == "This language is already exist in your language list.", message);
                     else if (message == "Duplicated data")
                         Assert.That(message == "Duplicated data", message);
@@ -92,7 +96,11 @@ namespace MarsFramework.Tests
                 }
                 else
                 {
-                    if (message == "This language is already exist in your language list.")
+                    if (message == "List is full. Only 4 languages are required.")
+                    {
+                        Assert.That(message == "List is full. Only 4 languages are required.", message);
+                    }
+                    else if (message == "This language is already exist in your language list.")
                         Assert.That(message == "This language is already exist in your language list.", message);
                     else if (message == "Duplicated data")
                         Assert.That(message == "Duplicated data", message);
@@ -143,7 +151,11 @@ namespace MarsFramework.Tests
                 }
                 else
                 {
-                    if (message == "This language is already exist in your language list.")
+                    if (message == "List is full. Only 4 languages are required.")
+                    {
+                        Assert.That(message == "List is full. Only 4 languages are required.", message);
+                    }
+                    else if (message == "This language is already exist in your language list.")
                         Assert.That(message == "This language is already exist in your language list.", message);
                     else if (message == "Duplicated data")
                         Assert.That(message == "Duplicated data", message);
@@ -194,7 +206,11 @@ namespace MarsFramework.Tests
                 }
                 else
                 {
-                    if (message == "This language is already exist in your language list.")
+                    if (message == "List is full. Only 4 languages are required.")
+                    {
+                        Assert.That(message == "List is full. Only 4 languages are required.", message);
+                    }
+                    else if (message == "This language is already exist in your language list.")
                         Assert.That(message == "This language is already exist in your language list.", message);
                     else if (message == "Duplicated data")
                         Assert.That(message == "Duplicated data", message);
@@ -245,7 +261,11 @@ namespace MarsFramework.Tests
                 }
                 else
                 {
-                    if (message == "This language is already exist in your language list.")
+                    if (message == "List is full. Only 4 languages are required.")
+                    {
+                        Assert.That(message == "List is full. Only 4 languages are required.", message);
+                    }
+                    else if (message == "This language is already exist in your language list.")
                         Assert.That(message == "This language is already exist in your language list.", message);
                     else if (message == "Duplicated data")
                         Assert.That(message == "Duplicated data", message);
@@ -296,7 +316,11 @@ namespace MarsFramework.Tests
                 }
                 else
                 {
-                    if (message == "This language is already exist in your language list.")
+                    if (message == "List is full. Only 4 languages are required.")
+                    {
+                        Assert.That(message == "List is full. Only 4 languages are required.", message);
+                    }
+                    else if (message == "This language is already exist in your language list.")
                         Assert.That(message == "This language is already exist in your language list.", message);
                     else if (message == "Duplicated data")
                         Assert.That(message == "Duplicated data", message);
