@@ -17,7 +17,7 @@ namespace MarsFramework.Pages
     {
         public ProfilePage()
         {
-           // ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
+           ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
         }
       
         #region  Find Elements
@@ -329,27 +329,34 @@ namespace MarsFramework.Pages
             Thread.Sleep(500);
             SkillsTab.Click();
 
-            //Click on Add New Skill Button
-            AddNewSkillBtn.Click();
-            //Enter the skill 
-            AddSkillName.SendKeys(skill);
+            if (AddNewSkillBtn.Displayed)
+            {
+                //Click on Add New Skill Button
+                AddNewSkillBtn.Click();
+                //Enter the skill 
+                AddSkillName.SendKeys(skill);
 
-            //Click the skill level dropdown
-            Thread.Sleep(500);
-            SkillLevelBtn.Click();
-            Thread.Sleep(1000);
-            SelectElement selectedLevel = new SelectElement(SkillLevelBtn);
-            selectedLevel.SelectByValue(level);
-            Thread.Sleep(500);
-            
-            //Click action
-            if (action == "Save")
-                SaveSkillBtn.Click();
+                //Click the skill level dropdown
+                Thread.Sleep(500);
+                SkillLevelBtn.Click();
+                Thread.Sleep(1000);
+                SelectElement selectedLevel = new SelectElement(SkillLevelBtn);
+                selectedLevel.SelectByValue(level);
+                Thread.Sleep(500);
+
+                //Click action
+                if (action == "Save")
+                    SaveSkillBtn.Click();
+                else
+                    CancelSkillBtn.Click();
+
+                Thread.Sleep(500);
+                notificationMessage = NotificationMesssage.Text;
+            }
             else
-                CancelSkillBtn.Click();
-
-            Thread.Sleep(500);
-            notificationMessage = NotificationMesssage.Text;
+            {
+                notificationMessage = "List is full.";
+            }
         }
 
         public void AddNewEducation(string university, string country, string title, string degree, string degreeYear, string action)

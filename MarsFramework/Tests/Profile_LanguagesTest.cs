@@ -20,8 +20,6 @@ namespace MarsFramework.Tests
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
             try
             {
                 // Add new Language   
@@ -34,30 +32,10 @@ namespace MarsFramework.Tests
 
                 // Assertion
                 string message = ProfilePageObj.GetNotificationMessage();
-                if (message == (expectedLanguage + " has been added to your languages"))
-                {
-                    Assert.That(message == (expectedLanguage + " has been added to your languages"), message);
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, "Passed, " + expectedLanguage + " has been added to your languages");
-                }
-                else {
-                    if(message== "List is full. Only 4 languages are required.")
-                    {
-                        Assert.That(message == "List is full. Only 4 languages are required.", message);
-                    }
-                    else if (message == "This language is already exist in your language list.")
-                        Assert.That(message == "This language is already exist in your language list.", message);
-                    else if (message == "Duplicated data")
-                        Assert.That(message == "Duplicated data", message);
-                    else if (message == "This language is already added to your language list.")
-                        Assert.That(message == "This language is already added to your language list.", message);
-                    else if (message == "Please enter language and level")
-                        Assert.That(message == "Please enter language and level", message);
-
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, message);
-                }
-
+                ProfileValidation.ValidateAddLanguageResult(message, expectedLanguage);
+                test.Log(Status.Pass, message);
+                test.Log(Status.Info, message);              
+                
             }
             catch (Exception ex)
             {
@@ -74,9 +52,7 @@ namespace MarsFramework.Tests
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
-            try
+           try
             {
                 // Add new Language   
                 ProfilePage ProfilePageObj = new ProfilePage();
@@ -88,30 +64,9 @@ namespace MarsFramework.Tests
 
                 // Assertion
                 string message = ProfilePageObj.GetNotificationMessage();
-                if (message == (expectedLanguage + " has been added to your languages"))
-                {
-                    Assert.That(message == (expectedLanguage + " has been added to your languages"), message);
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, "Passed, " + expectedLanguage + " has been added to your languages");
-                }
-                else
-                {
-                    if (message == "List is full. Only 4 languages are required.")
-                    {
-                        Assert.That(message == "List is full. Only 4 languages are required.", message);
-                    }
-                    else if (message == "This language is already exist in your language list.")
-                        Assert.That(message == "This language is already exist in your language list.", message);
-                    else if (message == "Duplicated data")
-                        Assert.That(message == "Duplicated data", message);
-                    else if (message == "This language is already added to your language list.")
-                        Assert.That(message == "This language is already added to your language list.", message);
-                    else if (message == "Please enter language and level")
-                        Assert.That(message == "Please enter language and level", message);
-
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, message);
-                }
+                ProfileValidation.ValidateAddLanguageResult(message, expectedLanguage);
+                test.Log(Status.Pass, message);
+                test.Log(Status.Info, message);           
 
             }
             catch (Exception ex)
@@ -128,9 +83,7 @@ namespace MarsFramework.Tests
 
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
-
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
+            
             try
             {
                 // Add new Language   
@@ -143,30 +96,9 @@ namespace MarsFramework.Tests
 
                 // Assertion
                 string message = ProfilePageObj.GetNotificationMessage();
-                if (message == (expectedLanguage + " has been added to your languages"))
-                {
-                    Assert.That(message == (expectedLanguage + " has been added to your languages"), message);
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, "Passed, " + expectedLanguage + " has been added to your languages");
-                }
-                else
-                {
-                    if (message == "List is full. Only 4 languages are required.")
-                    {
-                        Assert.That(message == "List is full. Only 4 languages are required.", message);
-                    }
-                    else if (message == "This language is already exist in your language list.")
-                        Assert.That(message == "This language is already exist in your language list.", message);
-                    else if (message == "Duplicated data")
-                        Assert.That(message == "Duplicated data", message);
-                    else if (message == "This language is already added to your language list.")
-                        Assert.That(message == "This language is already added to your language list.", message);
-                    else if (message == "Please enter language and level")
-                        Assert.That(message == "Please enter language and level", message);
-
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, message);
-                }
+                ProfileValidation.ValidateAddLanguageResult(message, expectedLanguage);
+                test.Log(Status.Pass, message);
+                test.Log(Status.Info, message);
 
             }
             catch (Exception ex)
@@ -184,8 +116,6 @@ namespace MarsFramework.Tests
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
             try
             {
                 // Add new Language   
@@ -198,30 +128,9 @@ namespace MarsFramework.Tests
 
                 // Assertion
                 string message = ProfilePageObj.GetNotificationMessage();
-                if (message == (expectedLanguage + " has been added to your languages"))
-                {
-                    Assert.That(message == (expectedLanguage + " has been added to your languages"), message);
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, "Passed, " + expectedLanguage + " has been added to your languages");
-                }
-                else
-                {
-                    if (message == "List is full. Only 4 languages are required.")
-                    {
-                        Assert.That(message == "List is full. Only 4 languages are required.", message);
-                    }
-                    else if (message == "This language is already exist in your language list.")
-                        Assert.That(message == "This language is already exist in your language list.", message);
-                    else if (message == "Duplicated data")
-                        Assert.That(message == "Duplicated data", message);
-                    else if (message == "This language is already added to your language list.")
-                        Assert.That(message == "This language is already added to your language list.", message);
-                    else if (message == "Please enter language and level")
-                        Assert.That(message == "Please enter language and level", message);
-
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, message);
-                }
+                ProfileValidation.ValidateAddLanguageResult(message, expectedLanguage);
+                test.Log(Status.Pass, message);
+                test.Log(Status.Info, message);
 
             }
             catch (Exception ex)
@@ -239,8 +148,6 @@ namespace MarsFramework.Tests
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
             try
             {
                 // Add new Language   
@@ -253,30 +160,9 @@ namespace MarsFramework.Tests
 
                 // Assertion
                 string message = ProfilePageObj.GetNotificationMessage();
-                if (message == (expectedLanguage + " has been added to your languages"))
-                {
-                    Assert.That(message == (expectedLanguage + " has been added to your languages"), message);
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, "Passed, " + expectedLanguage + " has been added to your languages");
-                }
-                else
-                {
-                    if (message == "List is full. Only 4 languages are required.")
-                    {
-                        Assert.That(message == "List is full. Only 4 languages are required.", message);
-                    }
-                    else if (message == "This language is already exist in your language list.")
-                        Assert.That(message == "This language is already exist in your language list.", message);
-                    else if (message == "Duplicated data")
-                        Assert.That(message == "Duplicated data", message);
-                    else if (message == "This language is already added to your language list.")
-                        Assert.That(message == "This language is already added to your language list.", message);
-                    else if (message == "Please enter language and level")
-                        Assert.That(message == "Please enter language and level", message);
-
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, message);
-                }
+                ProfileValidation.ValidateAddLanguageResult(message, expectedLanguage);
+                test.Log(Status.Pass, message);
+                test.Log(Status.Info, message);
 
             }
             catch (Exception ex)
@@ -294,8 +180,6 @@ namespace MarsFramework.Tests
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
             try
             {
                 // Add new Language   
@@ -308,30 +192,9 @@ namespace MarsFramework.Tests
 
                 // Assertion
                 string message = ProfilePageObj.GetNotificationMessage();
-                if (message == (expectedLanguage + " has been added to your languages"))
-                {
-                    Assert.That(message == (expectedLanguage + " has been added to your languages"), message);
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, "Passed, " + expectedLanguage + " has been added to your languages");
-                }
-                else
-                {
-                    if (message == "List is full. Only 4 languages are required.")
-                    {
-                        Assert.That(message == "List is full. Only 4 languages are required.", message);
-                    }
-                    else if (message == "This language is already exist in your language list.")
-                        Assert.That(message == "This language is already exist in your language list.", message);
-                    else if (message == "Duplicated data")
-                        Assert.That(message == "Duplicated data", message);
-                    else if (message == "This language is already added to your language list.")
-                        Assert.That(message == "This language is already added to your language list.", message);
-                    else if (message == "Please enter language and level")
-                        Assert.That(message == "Please enter language and level", message);
-
-                    // Log status in Extentreports
-                    test.Log(Status.Pass, message);
-                }
+                ProfileValidation.ValidateAddLanguageResult(message, expectedLanguage);
+                test.Log(Status.Pass, message);
+                test.Log(Status.Info, message);
 
             }
             catch (Exception ex)
