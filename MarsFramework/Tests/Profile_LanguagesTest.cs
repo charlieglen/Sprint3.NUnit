@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static MarsFramework.Global.GlobalDefinitions;
 
 namespace MarsFramework.Tests
 {
@@ -19,9 +20,10 @@ namespace MarsFramework.Tests
 
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
+            //ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
 
             try
-            {
+            {                
                 // Add new Language   
                 ProfilePage ProfilePageObj = new ProfilePage();
                 string expectedLanguage = GlobalDefinitions.ExcelLib.ReadData(2, "Language");
@@ -32,10 +34,14 @@ namespace MarsFramework.Tests
 
                 // Assertion
                 string message = ProfilePageObj.GetNotificationMessage();
-                ProfileValidation.ValidateAddLanguageResult(message, expectedLanguage);
-                test.Log(Status.Pass, message);
-                test.Log(Status.Info, message);              
-                
+                Boolean success = ProfileValidation.ValidateAddLanguageResult(message, expectedLanguage);
+                string successMessage = ProfileValidation.GetSuccessMessage();
+                if (success)
+                {
+                    Assert.That(message==successMessage);
+                    test.Log(Status.Pass, "Action successful");
+                    test.Log(Status.Info, message);
+                }
             }
             catch (Exception ex)
             {
@@ -93,13 +99,11 @@ namespace MarsFramework.Tests
                 string expectedAction = GlobalDefinitions.ExcelLib.ReadData(3, "AddLanguageAction");
                 ProfilePageObj.AddNewLanguage(expectedLanguage, expectedLangLevel, expectedAction);
 
-
                 // Assertion
                 string message = ProfilePageObj.GetNotificationMessage();
                 ProfileValidation.ValidateAddLanguageResult(message, expectedLanguage);
                 test.Log(Status.Pass, message);
                 test.Log(Status.Info, message);
-
             }
             catch (Exception ex)
             {

@@ -20,6 +20,8 @@ namespace MarsFramework.Pages
 
         public void LogInActions()
         {
+            //Thread.Sleep(100);
+            Wait.WaitToBeVisible(driver,"XPath","//*[@id=\"home\"]/div/div/div[1]/div/a",30);
             signinButton.Click();
             emailTextbox.SendKeys(ExcelLib.ReadData(4, "UserEmail"));
             passwordTextbox.SendKeys(ExcelLib.ReadData(4, "Password"));

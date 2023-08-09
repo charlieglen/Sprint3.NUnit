@@ -164,7 +164,7 @@ namespace MarsFramework.Pages
         //DIV[@class='ns-box-inner'][text()='First character can only be digit or letters']
         IWebElement NotificationMesssage => driver.FindElement(By.XPath("//div[@class=\"ns-box-inner\"]"));
 
-        private string notificationMessage;
+        private string notificationMessage="";
 
         #endregion
 
