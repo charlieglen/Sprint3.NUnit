@@ -16,12 +16,9 @@ namespace MarsFramework.Tests
         [Test(Description = "Check if user is able to assign initial Salary as - Less than $500 per month")]
         public void SelectEarnTarget()
         {
-
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
             try
             {
                 // Select Availability     
@@ -47,12 +44,9 @@ namespace MarsFramework.Tests
         [Test(Description = "Check if user is able to update current Salary as - More than $1000 per month")]
         public void EditEarnTarget()
         {
-
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
             try
             {
                 // Edit Availability     

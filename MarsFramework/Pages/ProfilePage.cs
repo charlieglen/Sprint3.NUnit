@@ -90,9 +90,16 @@ namespace MarsFramework.Pages
 
         //Click Cancel button to cancel new language entry
         IWebElement CancelLanguageBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[2]"));
+        
+        //First row in Language to Update
+        IWebElement LanguageToUpdate => driver.FindElement(By.XPath("(//I[@class='outline write icon'])[2]"));
 
+        //First row in Language to Delete
+        IWebElement LanguageToDelete => driver.FindElement(By.XPath("(//I[@class='remove icon'])[1]"));
+                
         //Click on Skills Tab
         IWebElement SkillsTab => driver.FindElement(By.XPath("//A[@class='item active'][text()='Skills']"));
+
 
         //Click on Add new to add new skill
         IWebElement AddNewSkillBtn => driver.FindElement(By.XPath("//DIV[@class='ui teal button'][text()='Add New']"));
@@ -156,7 +163,6 @@ namespace MarsFramework.Pages
 
         //Click Cancel button to cancel new certification entry
         IWebElement CancelCertificateBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[2]"));
-
 
         //Current Profile Description
         IWebElement CurrentDescription => driver.FindElement(By.XPath("(//SPAN)[16]"));
@@ -257,11 +263,7 @@ namespace MarsFramework.Pages
             Thread.Sleep(500);
             EditProfileDescription.Click();
             Thread.Sleep(1000);
-
-            DescriptionTextArea.Clear();
-            Thread.Sleep(1000);
-            DescriptionTextArea.SendKeys("Empty this");
-            Thread.Sleep(1000);
+            DescriptionTextArea.Click();            
             DescriptionTextArea.Clear();
             Thread.Sleep(1000);
             DescriptionTextArea.SendKeys(description);
@@ -322,6 +324,56 @@ namespace MarsFramework.Pages
             }
         }
 
+        public void EditLanguage(string lang, string level, string action)
+        {
+            //Click Language Tab
+            Thread.Sleep(500);
+            LanguagesTab.Click();
+                
+                //Click Edit Language button (first row)
+                Thread.Sleep(500);
+                LanguageToUpdate.Click();
+
+                Thread.Sleep(1000);
+                //Clear the Language Textbox
+                AddLanguageName.Clear();
+
+                Thread.Sleep(1000);
+                //Enter the Language
+                AddLanguageName.SendKeys(lang);
+
+                //Set Language Level
+                Thread.Sleep(500);
+                LanguageLevelBtn.Click();
+                Thread.Sleep(1000);
+                SelectElement selectedLevel = new SelectElement(LanguageLevelBtn);
+                selectedLevel.SelectByValue(level);
+                Thread.Sleep(500);
+
+                //Click action
+                if (action == "Save")
+                    SaveLanguageBtn.Click();
+                else
+                    CancelLanguageBtn.Click();
+
+                Thread.Sleep(1000);
+
+                notificationMessage = NotificationMesssage.Text;            
+        }
+
+        public void DeleteLanguage()
+        {
+            //Click Language Tab
+            Thread.Sleep(500);
+            LanguagesTab.Click();
+
+            //Click Delete Language button (first row)
+            Thread.Sleep(500);
+            LanguageToDelete.Click();
+
+            Thread.Sleep(500);
+            notificationMessage = NotificationMesssage.Text;
+        }
 
         public void AddNewSkill(string skill, string level, string action)
         {

@@ -16,12 +16,9 @@ namespace MarsFramework.Tests
         [Test(Description = "Check if user is able to assign initial Hours as - Less than 30hours a week")]
         public void SelectHours()
         {
-
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
-
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
+            
             try
             {
                 // Select Availability     
@@ -47,13 +44,8 @@ namespace MarsFramework.Tests
         [Test(Description = "Check if user is able to update current Hours as - As needed")]
         public void EditHours()
         {
-
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
-
-
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
 
             try
             {

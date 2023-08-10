@@ -31,10 +31,12 @@ namespace MarsFramework.Global
             htmlReporter.LoadConfig(ReportXMLPath);
             extent.AttachReporter(htmlReporter);
 
-            driver = new ChromeDriver();
+            driver = new ChromeDriver("C:\\Users\\Sheila\\source\\repos\\Advanced\\Sprint3.NUnit\\MarsFramework\\Config\\chrome-win64");
+            var options = new ChromeOptions();
+            options.AddArgument("no-sandbox");
             driver.Manage().Window.Maximize();
             driver.Navigate().GoToUrl(ExcelLib.ReadData(2, "Link"));
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
 
             LoginPage loginobj = new LoginPage();
             loginobj.LogInActions();
