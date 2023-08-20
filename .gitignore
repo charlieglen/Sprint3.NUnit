@@ -396,5 +396,3 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
-/MarsFramework/Config/chrome-win64
-/MarsFramework/TestReports/Screenshots

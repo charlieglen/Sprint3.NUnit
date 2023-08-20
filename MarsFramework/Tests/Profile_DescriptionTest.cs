@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static MarsFramework.Global.GlobalDefinitions.ExcelLib;
 
 namespace MarsFramework.Tests
 {
@@ -22,9 +23,9 @@ namespace MarsFramework.Tests
             try
             {
                 // Arrange
-                ProfilePage ProfileObj = new ProfilePage();
+                ProfilePage ProfileObj = new();
 
-                string expectedDescription = GlobalDefinitions.ExcelLib.ReadData(2, "Description");                
+                string expectedDescription = ReadData(2, "Description");                
                 ProfileObj.AddDescription(expectedDescription);
                                 
                 string currentNotification = ProfileObj.GetNotificationMessage();
@@ -52,9 +53,9 @@ namespace MarsFramework.Tests
             try
             {
                 // Arrange
-                ProfilePage ProfileObj = new ProfilePage();
+                ProfilePage ProfileObj = new();
                 
-                string expectedDescription = GlobalDefinitions.ExcelLib.ReadData(2, "Description");                
+                string expectedDescription = ReadData(2, "Description");                
                 ProfileObj.AddDescription(expectedDescription);
                 
                 string currentNotification = ProfileObj.GetNotificationMessage();
@@ -80,9 +81,9 @@ namespace MarsFramework.Tests
             try
             {
                 // Arrange
-                ProfilePage ProfileObj = new ProfilePage();
+                ProfilePage ProfileObj = new();
 
-                string expectedDescription = GlobalDefinitions.ExcelLib.ReadData(3, "Description");
+                string expectedDescription = ReadData(3, "Description");
                 ProfileObj.AddDescription(expectedDescription);
                 
                 string currentNotification = ProfileObj.GetNotificationMessage();
@@ -108,9 +109,9 @@ namespace MarsFramework.Tests
             try
             {
                 // Arrange
-                ProfilePage ProfileObj = new ProfilePage();
+                ProfilePage ProfileObj = new();
 
-                string expectedDescription = GlobalDefinitions.ExcelLib.ReadData(4, "Description");
+                string expectedDescription = ReadData(4, "Description");
                 ProfileObj.AddDescription(expectedDescription);
                 
                 string currentNotification = ProfileObj.GetNotificationMessage();
@@ -136,9 +137,9 @@ namespace MarsFramework.Tests
             try
             {
                 // Arrange
-                ProfilePage ProfileObj = new ProfilePage();
+                ProfilePage ProfileObj = new();
 
-                string expectedDescription = GlobalDefinitions.ExcelLib.ReadData(5, "Description");
+                string expectedDescription = ReadData(5, "Description");
                 ProfileObj.AddDescription(expectedDescription);
                 
                 string currentNotification = ProfileObj.GetNotificationMessage();
@@ -163,9 +164,9 @@ namespace MarsFramework.Tests
 
             try
             {                
-                ProfilePage ProfileObj = new ProfilePage();
+                ProfilePage ProfileObj = new();
 
-                string expectedDescription = GlobalDefinitions.ExcelLib.ReadData(6, "Description");
+                string expectedDescription = ReadData(6, "Description");
                 ProfileObj.AddDescription(expectedDescription);
                 
                 string currentNotification = ProfileObj.GetNotificationMessage();
@@ -191,9 +192,9 @@ namespace MarsFramework.Tests
             try
             {
                 // Arrange
-                ProfilePage ProfileObj = new ProfilePage();
+                ProfilePage ProfileObj = new();
 
-                string expectedDescription = GlobalDefinitions.ExcelLib.ReadData(7, "Description");
+                string expectedDescription = ReadData(7, "Description");
                 ProfileObj.AddDescription(expectedDescription);
                 
                 string currentNotification = ProfileObj.GetNotificationMessage();

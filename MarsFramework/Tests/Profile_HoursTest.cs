@@ -8,6 +8,8 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static MarsFramework.Global.GlobalDefinitions.ExcelLib;
+
 
 namespace MarsFramework.Tests
 {
@@ -23,7 +25,7 @@ namespace MarsFramework.Tests
             {
                 // Select Availability     
                 ProfilePage ProfileObj = new ProfilePage();
-                string expectedResult = GlobalDefinitions.ExcelLib.ReadData(2, "AvailableHours");
+                string expectedResult = ReadData(2, "AvailableHours");
                 ProfileObj.SelectHours(expectedResult);
 
                 // Assertion
@@ -51,7 +53,7 @@ namespace MarsFramework.Tests
             {
                 // Edit Availability     
                 ProfilePage ProfileObj = new ProfilePage();
-                string expectedResult = GlobalDefinitions.ExcelLib.ReadData(4, "AvailableHours");
+                string expectedResult = ReadData(4, "AvailableHours");
                 ProfileObj.SelectHours(expectedResult);
 
                 // Assertion

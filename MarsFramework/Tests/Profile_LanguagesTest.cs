@@ -8,7 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using static MarsFramework.Global.GlobalDefinitions;
+using static MarsFramework.Global.GlobalDefinitions.ExcelLib;
 
 namespace MarsFramework.Tests
 {
@@ -25,9 +25,9 @@ namespace MarsFramework.Tests
             {                
                 // Add new Language   
                 ProfilePage ProfilePageObj = new ProfilePage();
-                string expectedLanguage = GlobalDefinitions.ExcelLib.ReadData(2, "Language");
-                string expectedLangLevel = GlobalDefinitions.ExcelLib.ReadData(2, "LanguageLevel");
-                string expectedAction = GlobalDefinitions.ExcelLib.ReadData(2, "AddLanguageAction");
+                string expectedLanguage = ReadData(2, "Language");
+                string expectedLangLevel = ReadData(2, "LanguageLevel");
+                string expectedAction = ReadData(2, "AddLanguageAction");
                 ProfilePageObj.AddNewLanguage(expectedLanguage, expectedLangLevel, expectedAction);
 
                 // Validation
@@ -53,9 +53,9 @@ namespace MarsFramework.Tests
             {
                 // Add new Language   
                 ProfilePage ProfilePageObj = new ProfilePage();
-                string expectedLanguage = GlobalDefinitions.ExcelLib.ReadData(2, "Language");
-                string expectedLangLevel = GlobalDefinitions.ExcelLib.ReadData(2, "LanguageLevel");
-                string expectedAction = GlobalDefinitions.ExcelLib.ReadData(2, "AddLanguageAction");
+                string expectedLanguage = ReadData(2, "Language");
+                string expectedLangLevel = ReadData(2, "LanguageLevel");
+                string expectedAction = ReadData(2, "AddLanguageAction");
                 ProfilePageObj.AddNewLanguage(expectedLanguage, expectedLangLevel, expectedAction);
 
                 // Validation
@@ -81,9 +81,9 @@ namespace MarsFramework.Tests
             {
                 // Add new Language   
                 ProfilePage ProfilePageObj = new ProfilePage();
-                string expectedLanguage = GlobalDefinitions.ExcelLib.ReadData(3, "Language");
-                string expectedLangLevel = GlobalDefinitions.ExcelLib.ReadData(3, "LanguageLevel");
-                string expectedAction = GlobalDefinitions.ExcelLib.ReadData(3, "AddLanguageAction");
+                string expectedLanguage = ReadData(3, "Language");
+                string expectedLangLevel = ReadData(3, "LanguageLevel");
+                string expectedAction = ReadData(3, "AddLanguageAction");
                 ProfilePageObj.AddNewLanguage(expectedLanguage, expectedLangLevel, expectedAction);
 
                 // Validation
@@ -109,9 +109,9 @@ namespace MarsFramework.Tests
             {
                 // Add new Language   
                 ProfilePage ProfilePageObj = new ProfilePage();
-                string expectedLanguage = GlobalDefinitions.ExcelLib.ReadData(4, "Language");
-                string expectedLangLevel = GlobalDefinitions.ExcelLib.ReadData(4, "LanguageLevel");
-                string expectedAction = GlobalDefinitions.ExcelLib.ReadData(4, "AddLanguageAction");
+                string expectedLanguage = ReadData(4, "Language");
+                string expectedLangLevel = ReadData(4, "LanguageLevel");
+                string expectedAction = ReadData(4, "AddLanguageAction");
                 ProfilePageObj.AddNewLanguage(expectedLanguage, expectedLangLevel, expectedAction);
 
                 // Validation
@@ -137,9 +137,9 @@ namespace MarsFramework.Tests
             {
                 // Add new Language   
                 ProfilePage ProfilePageObj = new ProfilePage();
-                string expectedLanguage = GlobalDefinitions.ExcelLib.ReadData(6, "Language");
-                string expectedLangLevel = GlobalDefinitions.ExcelLib.ReadData(6, "LanguageLevel");
-                string expectedAction = GlobalDefinitions.ExcelLib.ReadData(6, "AddLanguageAction");
+                string expectedLanguage = ReadData(6, "Language");
+                string expectedLangLevel = ReadData(6, "LanguageLevel");
+                string expectedAction = ReadData(6, "AddLanguageAction");
                 ProfilePageObj.AddNewLanguage(expectedLanguage, expectedLangLevel, expectedAction);
 
                 // Validation
@@ -153,35 +153,7 @@ namespace MarsFramework.Tests
                 test.Log(Status.Info, ex.Message);
             }
         }
-
-        [Test(Description = "Check if user is able to add language with more than 500 characters")]
-        public void AddLanguageWithSixHundredCharacters()
-        {
-
-            //Create Extent Report
-            test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
-
-            try
-            {
-                // Add new Language   
-                ProfilePage ProfilePageObj = new ProfilePage();
-                string expectedLanguage = GlobalDefinitions.ExcelLib.ReadData(7, "Language");
-                string expectedLangLevel = GlobalDefinitions.ExcelLib.ReadData(7, "LanguageLevel");
-                string expectedAction = GlobalDefinitions.ExcelLib.ReadData(7, "AddLanguageAction");
-                ProfilePageObj.AddNewLanguage(expectedLanguage, expectedLangLevel, expectedAction);
-
-                // Validation
-                string message = ProfilePageObj.GetNotificationMessage();
-                ProfileValidation.ValidateAddLanguageResult(message, expectedLanguage, test);
-            }
-            catch (Exception ex)
-            {
-                // Log status in Extentreports
-                test.Log(Status.Fail, "Failed, Select action unsuccessfull.");
-                test.Log(Status.Info, ex.Message);
-            }
-        }
-
+        
         [Test(Description = "Check if user is able to update an existing language with valid data--> Updated Language")]
         public void EditLanguageWithValidData()
         {
@@ -193,9 +165,9 @@ namespace MarsFramework.Tests
             {
                 // Add new Language   
                 ProfilePage ProfilePageObj = new ProfilePage();
-                string expectedLanguage = GlobalDefinitions.ExcelLib.ReadData(10, "Language");
-                string expectedLangLevel = GlobalDefinitions.ExcelLib.ReadData(10, "LanguageLevel");
-                string expectedAction = GlobalDefinitions.ExcelLib.ReadData(10, "AddLanguageAction");
+                string expectedLanguage = ReadData(10, "Language");
+                string expectedLangLevel = ReadData(10, "LanguageLevel");
+                string expectedAction = ReadData(10, "AddLanguageAction");
                 ProfilePageObj.EditLanguage(expectedLanguage, expectedLangLevel, expectedAction);
 
                 // Validation

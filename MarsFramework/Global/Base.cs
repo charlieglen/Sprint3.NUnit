@@ -31,11 +31,13 @@ namespace MarsFramework.Global
             htmlReporter.LoadConfig(ReportXMLPath);
             extent.AttachReporter(htmlReporter);
 
-            driver = new ChromeDriver("C:\\Users\\Sheila\\source\\repos\\Advanced\\Sprint3.NUnit\\MarsFramework\\Config\\chrome-win64");
+            driver = new ChromeDriver();
             var options = new ChromeOptions();
             options.AddArgument("no-sandbox");
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(ExcelLib.ReadData(2, "Link"));
+            //driver.Navigate().GoToUrl(ExcelLib.ReadData(2, "Link"));
+            driver.Navigate().GoToUrl("http://localhost:5000/");
+            driver.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(30));
             //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
 
             LoginPage loginobj = new LoginPage();

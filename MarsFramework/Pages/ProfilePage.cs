@@ -10,6 +10,11 @@ using System.Threading.Tasks;
 using static MarsFramework.Global.GlobalDefinitions;
 using AventStack.ExtentReports;
 using System.Reflection.Emit;
+using static MarsFramework.Global.GlobalDefinitions.Wait;
+using static MarsFramework.Global.GlobalDefinitions.ExcelLib;
+using Microsoft.Office.Interop.Excel;
+//
+
 
 namespace MarsFramework.Pages
 {
@@ -17,7 +22,7 @@ namespace MarsFramework.Pages
     {
         public ProfilePage()
         {
-           ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
+           PopulateInCollection(ExcelPath, "Profile");
         }
       
         #region  Find Elements
@@ -62,7 +67,7 @@ namespace MarsFramework.Pages
         IWebElement SalaryOpt => driver.FindElement(By.XPath("//SELECT[@class='ui right labeled dropdown']"));
 
         //Current Earn Target Value
-        IWebElement CurrentSalaryValue => driver.FindElement(By.XPath("(//SPAN)[14]"));
+        //IWebElement CurrentSalaryValue => driver.FindElement(By.XPath("(//SPAN)[14]"));
 
         //Click Edit Description
         IWebElement EditProfileDescription => driver.FindElement(By.XPath("(//I[@class='outline write icon'])[1]"));
@@ -98,8 +103,7 @@ namespace MarsFramework.Pages
         IWebElement LanguageToDelete => driver.FindElement(By.XPath("(//I[@class='remove icon'])[1]"));
                 
         //Click on Skills Tab
-        IWebElement SkillsTab => driver.FindElement(By.XPath("//A[@class='item active'][text()='Skills']"));
-
+        IWebElement SkillsTab => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]"));
 
         //Click on Add new to add new skill
         IWebElement AddNewSkillBtn => driver.FindElement(By.XPath("//DIV[@class='ui teal button'][text()='Add New']"));
@@ -116,11 +120,14 @@ namespace MarsFramework.Pages
         //Click Cancel button to cancel new skill entry
         IWebElement CancelSkillBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[2]"));
 
+        IWebElement SkillToUpdate => driver.FindElement(By.XPath("(//I[@class='outline write icon'])[4]"));
+        IWebElement SkillToDelete => driver.FindElement(By.XPath("(//I[@class='remove icon'])[3]"));
+
         //Click on Education Tab
-        IWebElement EducationTab => driver.FindElement(By.XPath("//A[@class='item active'][text()='Education']"));
+        IWebElement EducationTab => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[3]"));
 
         //Click on Add new to Education
-        IWebElement AddNewEducationBtn => driver.FindElement(By.XPath("(//DIV[@class='ui teal button '])[1]"));
+        IWebElement AddNewEducationBtn => driver.FindElement(By.XPath("(//DIV[@class='ui teal button '])[2]"));
 
         //Enter university in the text box
         IWebElement EnterUniversityName => driver.FindElement(By.XPath("(//INPUT[@type='text'])[4]"));
@@ -143,11 +150,14 @@ namespace MarsFramework.Pages
         //Click Cancel button to cancel new education entry
         IWebElement CancelEducationBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[2]"));
 
+        IWebElement EducationToUpdate => driver.FindElement(By.XPath("(//I[@class='outline write icon'])[5]"));
+        IWebElement EducationToDelete => driver.FindElement(By.XPath("(//I[@class='remove icon'])[4]"));
+
         //Click on Education Tab
-        IWebElement CertificationsTab => driver.FindElement(By.XPath("//A[@class='item'][text()='Certifications']"));
+        IWebElement CertificationsTab => driver.FindElement(By.XPath("//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[4]"));
 
         //Click Add new Certification button
-        IWebElement AddNewCertificationBtn => driver.FindElement(By.XPath("(//DIV[@class='ui teal button '][text()='Add New'])[2]"));
+        IWebElement AddNewCertificationBtn => driver.FindElement(By.XPath("(//DIV[@class='ui teal button '][text()='Add New'])[3]"));
 
         //Enter Certificate Name
         IWebElement EnterCerticateName => driver.FindElement(By.XPath("(//INPUT[@type='text'])[4]"));
@@ -164,6 +174,9 @@ namespace MarsFramework.Pages
         //Click Cancel button to cancel new certification entry
         IWebElement CancelCertificateBtn => driver.FindElement(By.XPath("(//INPUT[@type='button'])[2]"));
 
+        IWebElement CertificateToUpdate => driver.FindElement(By.XPath("(//I[@class='outline write icon'])[8]"));
+        IWebElement CertificateToDelete => driver.FindElement(By.XPath("(//I[@class='remove icon'])[7]"));
+
         //Current Profile Description
         IWebElement CurrentDescription => driver.FindElement(By.XPath("(//SPAN)[16]"));
 
@@ -171,34 +184,30 @@ namespace MarsFramework.Pages
         IWebElement NotificationMesssage => driver.FindElement(By.XPath("//div[@class=\"ns-box-inner\"]"));
 
         private string notificationMessage="";
+        private string hoursValue="";
+        private string availability = "";
+        private string salaryValue = "";
 
         #endregion
 
         public void EditFullName()
         {
-
-            //Populate the Excel Sheet
-            GlobalDefinitions.ExcelLib.PopulateInCollection(Base.ExcelPath, "Profile");
-            Thread.Sleep(1000);
-
             //Click on Edit button
+            WaitToBeClickable("XPath", "(//I[@class='dropdown icon'])[2]", 30);
             FullNameDropdownBtn.Click();
 
-            FirstName.Clear();
-            Thread.Sleep(500);
-            FirstName.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "FirstName"));
+            //wait(30);
+            FirstName.Clear();           
+            FirstName.SendKeys(ReadData(2, "FirstName"));
 
+            //wait(30);
             LastName.Clear();
-            Thread.Sleep(500);
-            LastName.SendKeys(GlobalDefinitions.ExcelLib.ReadData(2, "LastName"));
+            LastName.SendKeys(ReadData(2, "LastName"));
 
             SaveFullName.Click();
-
-            Thread.Sleep(1000);
-
-            if (FullName.Text == GlobalDefinitions.ExcelLib.ReadData(2, "FullName"))
-            {
-               
+            wait(30);
+            if (FullName.Text == ReadData(2, "FullName"))
+            {               
                 test.Log(Status.Pass, "Full Name updated Successfully");
             }
             else
@@ -210,67 +219,69 @@ namespace MarsFramework.Pages
         public void SelectAvailability(string availability)
         {
             //Availability Time option
-            Thread.Sleep(1500);
-
+            wait(30);
             EditAvailabilityTime.Click();
-            Thread.Sleep(500);
+            wait(30);
             SelectElement selectAvailability = new SelectElement(AvailabilityTimeOpt);
             selectAvailability.SelectByText(availability);
+            wait(30);
+            availability = CurrentAvailability.Text;
         }
 
         public string GetAvailabilityValue()
-        {
-            string availability = CurrentAvailability.Text;
+        {            
             return availability;
         }
 
         public void SelectHours(string hours)
         {
             //Availability Time option
-            Thread.Sleep(1500);
-
+            wait(30);
             EditAvailabilityHours.Click();
-            Thread.Sleep(500);
+            wait(30);
             SelectElement selectHours = new SelectElement(AvailabilityHoursOpt);
             selectHours.SelectByText(hours);
+            wait(30);
+            hoursValue = CurrentHours.Text;
         }
 
         public string GetHoursValue()
-        {
-            string hoursValue = CurrentHours.Text;
+        {            
             return hoursValue;
         }
 
         public void EarnTarget(string salary)
         {
             //Availability Time option
-            Thread.Sleep(1500);
-
+            wait(30);
             EditSalary.Click();
-            Thread.Sleep(500);
-            SelectElement salaryValue = new SelectElement(SalaryOpt);
-            salaryValue.SelectByText(salary);
+            wait(30);
+            SelectElement earnTargetValue = new SelectElement(SalaryOpt);
+            earnTargetValue.SelectByText(salary);
+            wait(50);
+            
+            //salaryValue = driver.FindElement(By.XPath("(//SPAN)[14]")).Text;
+            //salaryValue = CurrentSalaryValue.Text;
         }
 
         public string GetEarnTargetValue()
-        {
-            string salaryValue = CurrentSalaryValue.Text;
-            return salaryValue;
+        {            
+            return driver.FindElement(By.XPath("(//SPAN)[14]")).Text; 
         }
 
         public void AddDescription(string description)
         {
-            Thread.Sleep(500);
+            wait(30);
             EditProfileDescription.Click();
-            Thread.Sleep(1000);
+            wait(30);
             DescriptionTextArea.Click();            
             DescriptionTextArea.Clear();
-            Thread.Sleep(1000);
+            wait(30);
             DescriptionTextArea.SendKeys(description);
-            Thread.Sleep(1000);
+            wait(30);
             SaveDescription.Click();
 
-            Thread.Sleep(1000);
+            wait(30);
 
             notificationMessage = NotificationMesssage.Text;
 
@@ -289,211 +300,396 @@ namespace MarsFramework.Pages
         public void AddNewLanguage(string lang, string level, string action)
         {
             //Click Language Tab
-            Thread.Sleep(500);
+            wait(30);
             LanguagesTab.Click();
 
             if (AddNewLanguageBtn.Displayed) { 
                 //Click on Add New Language button
-                Thread.Sleep(500);
+                wait(30);
                 AddNewLanguageBtn.Click();
 
-                Thread.Sleep(1000);
+                wait(30);
                 //Enter the Language
                 AddLanguageName.SendKeys(lang);
 
                 //Set Language Level
-                Thread.Sleep(500);
+                wait(30);
                 LanguageLevelBtn.Click();
-                Thread.Sleep(1000);
+                wait(30);
                 SelectElement selectedLevel = new SelectElement(LanguageLevelBtn);
                 selectedLevel.SelectByValue(level);
-                Thread.Sleep(500);
+                wait(30);
 
                 //Click action
                 if (action == "Save")
                     SaveLanguageBtn.Click();
                 else
                     CancelLanguageBtn.Click();
-
-                Thread.Sleep(1000);
-
-                notificationMessage = NotificationMesssage.Text;
             }
-            else {
-                notificationMessage = "List is full. Only 4 languages are required.";
-            }
+            wait(30);
+            notificationMessage = NotificationMesssage.Text;
         }
 
         public void EditLanguage(string lang, string level, string action)
         {
             //Click Language Tab
-            Thread.Sleep(500);
+            wait(30);
             LanguagesTab.Click();
                 
-                //Click Edit Language button (first row)
-                Thread.Sleep(500);
-                LanguageToUpdate.Click();
+            //Click Edit Language button (first row)
+            wait(30);
+            LanguageToUpdate.Click();
 
-                Thread.Sleep(1000);
-                //Clear the Language Textbox
-                AddLanguageName.Clear();
+            wait(30);
+            //Clear the Language Textbox
+            AddLanguageName.Clear();
 
-                Thread.Sleep(1000);
-                //Enter the Language
-                AddLanguageName.SendKeys(lang);
+            wait(30);
+            //Enter the Language
+            AddLanguageName.SendKeys(lang);
 
-                //Set Language Level
-                Thread.Sleep(500);
-                LanguageLevelBtn.Click();
-                Thread.Sleep(1000);
-                SelectElement selectedLevel = new SelectElement(LanguageLevelBtn);
-                selectedLevel.SelectByValue(level);
-                Thread.Sleep(500);
+            //Set Language Level
+            wait(30);
+            LanguageLevelBtn.Click();
+            wait(30);
+            SelectElement selectedLevel = new SelectElement(LanguageLevelBtn);
+            selectedLevel.SelectByValue(level);
+            wait(30);
 
-                //Click action
-                if (action == "Save")
-                    SaveLanguageBtn.Click();
-                else
-                    CancelLanguageBtn.Click();
+            //Click action
+            if (action == "Save")
+                SaveLanguageBtn.Click();
+            else
+                CancelLanguageBtn.Click();
 
-                Thread.Sleep(1000);
+            wait(30);
 
-                notificationMessage = NotificationMesssage.Text;            
+            notificationMessage = NotificationMesssage.Text;            
         }
 
         public void DeleteLanguage()
         {
             //Click Language Tab
-            Thread.Sleep(500);
+            wait(30);
             LanguagesTab.Click();
 
             //Click Delete Language button (first row)
-            Thread.Sleep(500);
+            wait(30);
             LanguageToDelete.Click();
 
-            Thread.Sleep(500);
+            wait(30);
             notificationMessage = NotificationMesssage.Text;
         }
+
+
 
         public void AddNewSkill(string skill, string level, string action)
         {
             //Click Skills Tab
-            Thread.Sleep(500);
-            SkillsTab.Click();
+            Wait.WaitToBeClickable("XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]", 50);
+            SkillsTab.Click();          
 
             if (AddNewSkillBtn.Displayed)
             {
                 //Click on Add New Skill Button
+                wait(30);
                 AddNewSkillBtn.Click();
                 //Enter the skill 
                 AddSkillName.SendKeys(skill);
 
                 //Click the skill level dropdown
-                Thread.Sleep(500);
+                wait(30);
                 SkillLevelBtn.Click();
-                Thread.Sleep(1000);
+                wait(30);
                 SelectElement selectedLevel = new SelectElement(SkillLevelBtn);
                 selectedLevel.SelectByValue(level);
-                Thread.Sleep(500);
+                wait(30);
 
                 //Click action
                 if (action == "Save")
                     SaveSkillBtn.Click();
                 else
-                    CancelSkillBtn.Click();
+                    CancelSkillBtn.Click();              
+            }
 
-                Thread.Sleep(500);
-                notificationMessage = NotificationMesssage.Text;
-            }
-            else
-            {
-                notificationMessage = "List is full.";
-            }
+            wait(30);
+            notificationMessage = NotificationMesssage.Text;
         }
+
+        public void EditSkill(string lang, string level, string action)
+        {
+            //Click Skills Tab
+            Wait.WaitToBeClickable("XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]", 50);
+            SkillsTab.Click();
+
+            //Click Edit Skill button (first row)
+            wait(30);
+            SkillToUpdate.Click();
+
+            wait(30);
+            //Clear the Skill Name
+            AddSkillName.Clear();
+
+            wait(30);
+            //Enter the Skill
+            AddSkillName.SendKeys(lang);
+
+            //Set Skill Level
+            wait(30);
+            SkillLevelBtn.Click();
+            wait(30);
+            SelectElement selectedLevel = new SelectElement(SkillLevelBtn);
+            selectedLevel.SelectByValue(level);
+            wait(30);
+
+            //Click action
+            if (action == "Save")
+                SaveSkillBtn.Click();
+            else
+                CancelSkillBtn.Click();
+
+            wait(30);
+            notificationMessage = NotificationMesssage.Text;
+        }
+
+        public void DeleteSkill()
+        {
+            //Click Skills Tab
+            Wait.WaitToBeClickable("XPath", "//*[@id=\"account-profile-section\"]/div/section[2]/div/div/div/div[3]/form/div[1]/a[2]", 50);
+            SkillsTab.Click();
+
+            //Click Delete Skill button (first row)
+            wait(30);
+            SkillToDelete.Click();
+
+            wait(30);
+            notificationMessage = NotificationMesssage.Text;
+        }
+
 
         public void AddNewEducation(string university, string country, string title, string degree, string degreeYear, string action)
         {
-            //Click Skills Tab
-            Thread.Sleep(500);
+            //Click Education Tab
+            wait(30);
             EducationTab.Click();
 
-            //Click Add Education button
-            AddNewEducationBtn.Click();
+            if (AddNewEducationBtn.Displayed)
+            {
+                wait(30);
+                //Click Add Education button
+                AddNewEducationBtn.Click();
+
+                wait(30);
+                //Enter the University
+                EnterUniversityName.SendKeys(university);
+
+                //Choose Country
+                wait(30);
+                ChooseCountryBtn.Click();
+                wait(500);
+                SelectElement selectedCountry = new SelectElement(ChooseCountryBtn);
+                selectedCountry.SelectByValue(country);
+
+                //Choose Title
+                wait(30);
+                ChooseTitleBtn.Click();
+                wait(50);
+                SelectElement selectedTitle = new SelectElement(ChooseTitleBtn);
+                selectedTitle.SelectByValue(title);
+
+                //Enter Degree
+                wait(30);
+                Degree.SendKeys(degree);
+
+                //Year of Graduation
+                wait(30);
+                DegreeYear.Click();
+                wait(30);
+                SelectElement selectedYear = new SelectElement(DegreeYear);
+                selectedYear.SelectByValue(degreeYear);
+
+                //Click action
+                wait(30);
+                if (action == "Save")
+                    SaveEducationBtn.Click();
+                else
+                    CancelEducationBtn.Click();
+            }
+            wait(30);
+            notificationMessage = NotificationMesssage.Text;
+        }
+
+             
+        public void EditEducation(string university, string country, string title, string degree, string degreeYear, string action)
+        {
+            //Click Education Tab
+            wait(30);
+            EducationTab.Click();
+
+            wait(30);
+            //Click Edit Education button (first row)
+            EducationToUpdate.Click();
+
+            wait(30);
+            //Clear the University Name
+            EnterUniversityName.Clear();
+
+            wait(30);
             //Enter the University
             EnterUniversityName.SendKeys(university);
 
             //Choose Country
-            Thread.Sleep(500);
+            Wait.WaitToBeClickable("XPath", "(//SELECT[@class='ui fluid dropdown'])[1]", 100);
             ChooseCountryBtn.Click();
-            Thread.Sleep(1000);
+            wait(500);
             SelectElement selectedCountry = new SelectElement(ChooseCountryBtn);
             selectedCountry.SelectByValue(country);
 
             //Choose Title
-            Thread.Sleep(500);
+            wait(30);
             ChooseTitleBtn.Click();
-            Thread.Sleep(1000);
-            SelectElement selectedTitle= new SelectElement(ChooseTitleBtn);
+            wait(50);
+            SelectElement selectedTitle = new SelectElement(ChooseTitleBtn);
             selectedTitle.SelectByValue(title);
 
+            //Clear the Degree Value
+            wait(30);
+            Degree.Clear();
+
             //Enter Degree
-            Thread.Sleep(500);
+            wait(30);
             Degree.SendKeys(degree);
 
             //Year of Graduation
-            Thread.Sleep(500);
+            wait(30);
             DegreeYear.Click();
-            Thread.Sleep(1000);
+            wait(30);
             SelectElement selectedYear = new SelectElement(DegreeYear);
             selectedYear.SelectByValue(degreeYear);
 
             //Click action
-            Thread.Sleep(500);
+            wait(30);
             if (action == "Save")
                 SaveEducationBtn.Click();
             else
                 CancelEducationBtn.Click();
-
-            Thread.Sleep(500);
+            
+            wait(30);
             notificationMessage = NotificationMesssage.Text;
         }
 
+        public void DeleteEducation()
+        {
+            //Click Education Tab
+            wait(30);
+            EducationTab.Click();
+
+            //Click Delete Skill button (first row)
+            wait(30);
+            EducationToDelete.Click();
+
+            wait(30);
+            notificationMessage = NotificationMesssage.Text;
+        }
+
+
+
+
         public void AddNewCertificate(string certName, string certFrom, string yearCert, string action)
         {
-            //Click Skills Tab
-            Thread.Sleep(500);
+            //Click Certificate Tab
+            wait(30);
             CertificationsTab.Click();
 
-            //Add new Certificate button
-            Thread.Sleep(500);
-            AddNewCertificationBtn.Click();
+            if (AddNewCertificationBtn.Displayed)
+            {
+                //Add new Certificate button
+                wait(30);
+                AddNewCertificationBtn.Click();
+
+                //Enter Certificate Name
+                wait(30);
+                EnterCerticateName.SendKeys(certName);
+
+                //Enter Certified from
+                wait(30);
+                CertifiedFrom.SendKeys(certFrom);
+
+                //Enter the Year Certified
+                wait(30);
+                YearCertified.Click();
+                wait(30);
+                SelectElement selectedYear = new SelectElement(YearCertified);
+                selectedYear.SelectByValue(yearCert);
+
+                //Click action
+                wait(30);
+                if (action == "Save")
+                    SaveCertificateBtn.Click();
+                else
+                    CancelCertificateBtn.Click();
+            }
+                wait(30);
+                notificationMessage = NotificationMesssage.Text;
+        }
+        
+        public void EditCertificate(string certName, string certFrom, string yearCert, string action)
+        {
+            //Click Certificate Tab
+            wait(30);
+            CertificationsTab.Click();
+                        
+            //Click Edit Certificate button (first row)
+            wait(30);
+            CertificateToUpdate.Click();
+
+            wait(30);
+            //Clear the Certificate Name Textbox
+            EnterCerticateName.Clear();
 
             //Enter Certificate Name
-            Thread.Sleep(500);
+            wait(30);
             EnterCerticateName.SendKeys(certName);
 
+            wait(30);
+            //Clear the Certificate From Textbox
+            CertifiedFrom.Clear();
+
             //Enter Certified from
-            Thread.Sleep(500);
+            wait(30);
             CertifiedFrom.SendKeys(certFrom);
 
             //Enter the Year Certified
-            Thread.Sleep(500);
+            wait(30);
             YearCertified.Click();
-            Thread.Sleep(1000);
+            wait(30);
             SelectElement selectedYear = new SelectElement(YearCertified);
             selectedYear.SelectByValue(yearCert);
 
             //Click action
-            Thread.Sleep(500);
+            wait(30);
             if (action == "Save")
-                SaveEducationBtn.Click();
+                SaveCertificateBtn.Click();
             else
-                CancelEducationBtn.Click();
-
-            Thread.Sleep(500);
+                CancelCertificateBtn.Click();
+            
+            wait(30);
             notificationMessage = NotificationMesssage.Text;
-
         }
-       
+
+        public void DeleteCertificate()
+        {
+            //Click Certificate Tab
+            wait(30);
+            CertificationsTab.Click();
+
+            //Click Delete Certificate button (first row)
+            wait(30);
+            CertificateToDelete.Click();
+
+            wait(30);
+            notificationMessage = NotificationMesssage.Text;
+        }
+
     }
 }

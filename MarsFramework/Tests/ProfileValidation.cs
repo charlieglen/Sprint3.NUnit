@@ -96,8 +96,123 @@ namespace MarsFramework.Tests
             }           
         }
 
+        public static void ValidateAddSkillResult(string message, string expectedSkill, ExtentTest test)
+        {
+            if ((message == (expectedSkill + " has been added to your skills")) ||
+            (message == "undefined") ||
+            (message == "This skill is already exist in your skill list.") ||
+            (message == "Duplicated data") ||           
+            (message == "Please enter skill and experience level"))
+            {
+                // Log status in Extentreports
+                test.Log(Status.Pass, "Action successful");
+                test.Log(Status.Info, message);
+            }
+            else
+            {
+                // Log status in Extentreports
+                test.Log(Status.Fail, "Action unsuccessful");
+                test.Log(Status.Info, message);
+            }
 
+        }
 
+        public static void ValidateEditSkillResult(string message, string expectedSkill, ExtentTest test)
+        {
+            if ((message == (expectedSkill + " has been updated to your skills")) ||
+            (message == "This skill is already exist in your skill list.") ||
+            (message == "Duplicated data") ||            
+            (message == "Please enter skill and experience level"))
+            {
+                // Log status in Extentreports
+                test.Log(Status.Pass, "Action successful");
+                test.Log(Status.Info, message);
+            }
+            else
+            {
+                // Log status in Extentreports
+                test.Log(Status.Fail, "Action unsuccessful");
+                test.Log(Status.Info, message);
+            }
+        }
 
+        public static void ValidateAddCertificateResult(string message, string certName, ExtentTest test)
+        {
+            if ((message == (certName + " has been added to your certification")) ||
+            (message == "undefined") ||
+            (message == "This information is already exist.") ||
+            (message == "Duplicated data") ||
+            (message == "Please enter Certification Name, Certification From and Certification Year"))
+            {
+                // Log status in Extentreports
+                test.Log(Status.Pass, "Action successful");
+                test.Log(Status.Info, message);
+            }
+            else
+            {
+                // Log status in Extentreports
+                test.Log(Status.Fail, "Action unsuccessful");
+                test.Log(Status.Info, message);
+            }
+        }
+        public static void ValidateEditCertificateResult(string message, string certName, ExtentTest test)
+        {
+            if ((message == (certName + " has been updated to your certification")) ||
+            (message == "undefined") ||
+            (message == "This information is already exist.") ||
+            (message == "Duplicated data") ||
+            (message == "Please enter Certification Name, Certification From and Certification Year"))
+            {
+                // Log status in Extentreports
+                test.Log(Status.Pass, "Action successful");
+                test.Log(Status.Info, message);
+            }
+            else
+            {
+                // Log status in Extentreports
+                test.Log(Status.Fail, "Action unsuccessful");
+                test.Log(Status.Info, message);
+            }
+
+        }
+
+        public static void ValidateAddEducationResult(string message, ExtentTest test)
+        {
+            if ((message.Contains("Education has been added")) ||
+            (message == "This information is already exist.") ||
+            (message == "Duplicated data") ||
+            (message.Contains("Please enter all the fields")))
+            {
+                // Log status in Extentreports
+                test.Log(Status.Pass, "Action successful");
+                test.Log(Status.Info, message);
+            }
+            else
+            {
+                // Log status in Extentreports
+                test.Log(Status.Fail, "Action unsuccessful");
+                test.Log(Status.Info, message);
+            }
+        }
+
+        public static void ValidateEditEducationResult(string message, ExtentTest test)
+        {
+            if ((message.Contains("Education as been updated")) ||
+            (message == "This information is already exist.") ||
+            (message == "Duplicated data") ||
+            (message == "There is an error when updating education") ||
+            (message.Contains("Please enter all the fields")))
+            {
+                // Log status in Extentreports
+                test.Log(Status.Pass, "Action successful");
+                test.Log(Status.Info, message);
+            }
+            else
+            {
+                // Log status in Extentreports
+                test.Log(Status.Fail, "Action unsuccessful");
+                test.Log(Status.Info, message);
+            }
+        }
     }
 }
