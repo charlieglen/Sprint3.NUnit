@@ -37,7 +37,7 @@ namespace MarsFramework.Global
             driver.Manage().Window.Maximize();
             //driver.Navigate().GoToUrl(ExcelLib.ReadData(2, "Link"));
             driver.Navigate().GoToUrl("http://localhost:5000/");
-            driver.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(30));
+            //driver.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(30));
             //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
 
             LoginPage loginobj = new LoginPage();

@@ -1,14 +1,9 @@
 ﻿using MarsFramework.Global;
-using MarsFramework.Pages;
+using MarsFramework.Pages.ProfilePages;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MarsFramework.Tests
+namespace MarsFramework.Tests.ProfilePageTests
 {
     public class Profile_FullNameTest : Base
     {
@@ -17,10 +12,10 @@ namespace MarsFramework.Tests
         {
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
-                        
+
             // Edit Profile Full Name     
-            ProfilePage Profileobj = new ProfilePage();
-            Profileobj.EditFullName();
+            ProfileFullName fullNameobj = new ProfileFullName();
+            fullNameobj.EditFullName();
         }
 
     }
