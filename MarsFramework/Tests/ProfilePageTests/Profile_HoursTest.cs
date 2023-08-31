@@ -45,6 +45,7 @@ namespace MarsFramework.Tests.ProfilePageTests
 
                 // Log status in Extentreports
                 test.Log(Status.Pass, "Passed, Hours successfully selected.");
+                test.Log(Status.Info, "Hours Selected " + result);
             }
             catch (Exception ex)
             {

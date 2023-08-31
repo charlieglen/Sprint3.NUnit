@@ -4,6 +4,7 @@ using static MarsFramework.Global.GlobalDefinitions.ExcelLib;
 using static MarsFramework.Global.GlobalDefinitions;
 using static MarsFramework.Global.GlobalDefinitions.Wait;
 using AventStack.ExtentReports;
+using NUnit.Framework;
 
 namespace MarsFramework.Pages.ProfilePages
 {
@@ -44,26 +45,44 @@ namespace MarsFramework.Pages.ProfilePages
 
         public void EditFullName()
         {
+            string fName = ReadData(2, "FirstName");
+            string lName = ReadData(2, "LastName");
+            string fullName= fName + " " + lName;
+            string fullNameValue = "";
+
             //Click on Edit button
             WaitToBeClickable("XPath", "(//I[@class='dropdown icon'])[2]", 30);
             FullNameDropdownBtn.Click();
 
-            //wait(30);
+            wait(350);
             FirstName.Clear();
-            FirstName.SendKeys(ReadData(2, "FirstName"));
+            wait(250);
+            FirstName.Clear();
+            FirstName.SendKeys(fName);
 
-            //wait(30);
+            wait(250);
             LastName.Clear();
-            LastName.SendKeys(ReadData(2, "LastName"));
+            wait(250);
+            LastName.SendKeys(lName);
 
+            wait(150);
             SaveFullName.Click();
-            wait(30);
-            if (FullName.Text == ReadData(2, "FullName"))
+            Thread.Sleep(1000);
+            driver.Navigate().Refresh();
+            Thread.Sleep(1000);
+                        
+            WaitToBeVisible(driver, "XPath", "//DIV[@class='title']", 50);
+            fullNameValue = FullName.Text;
+
+            if (fullNameValue == fullName)
             {
-                test.Log(Status.Pass, "Full Name updated Successfully");
+                test.Log(Status.Pass, "Full Name successfully updated to " + fullNameValue);
+                test.Log(Status.Info, "Full Name successfully updated to " + fullNameValue);
+                Assert.That(FullName.Text == fullName, "Full Name not updated");
             }
             else
             {
+
                 test.Log(Status.Fail, "Full Name Not Updated");
             }
         }

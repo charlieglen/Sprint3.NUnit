@@ -43,15 +43,17 @@ namespace MarsFramework.Pages.ProfilePages
             earnTargetValue.SelectByText(salary);
             wait(50);
 
-            //salaryValue = driver.FindElement(By.XPath("(//SPAN)[14]")).Text;
-            //salaryValue = CurrentSalaryValue.Text;
+            Thread.Sleep(1000);
+            driver.Navigate().Refresh();
+            Thread.Sleep(1000);
+                        
+            WaitToBeVisible(driver, "XPath", "(//SPAN)[14]", 50);
+            salaryValue = CurrentSalaryValue.Text;
         }
-
         public string GetEarnTargetValue()
         {
-            return driver.FindElement(By.XPath("(//SPAN)[14]")).Text;
+            return salaryValue;            
         }
-
         public string GetNotificationMessage()
         {
             return notificationMessage;

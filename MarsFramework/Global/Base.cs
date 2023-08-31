@@ -32,8 +32,10 @@ namespace MarsFramework.Global
             extent.AttachReporter(htmlReporter);
 
             driver = new ChromeDriver();
-            var options = new ChromeOptions();
-            options.AddArgument("no-sandbox");
+
+            //var options = new ChromeOptions();
+            //driver = new ChromeDriver(ChromeDriverService.CreateDefaultService(), options, TimeSpan.FromMinutes(3));
+            //options.AddArgument("no-sandbox");
             driver.Manage().Window.Maximize();
             //driver.Navigate().GoToUrl(ExcelLib.ReadData(2, "Link"));
             driver.Navigate().GoToUrl("http://localhost:5000/");

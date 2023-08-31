@@ -43,6 +43,7 @@ namespace MarsFramework.Tests.ProfilePageTests
 
                 // Log status in Extentreports
                 test.Log(Status.Pass, "Passed, Earn Target successfully selected.");
+                test.Log(Status.Info, "Salary Selected " + result);
             }
             catch (Exception ex)
             {

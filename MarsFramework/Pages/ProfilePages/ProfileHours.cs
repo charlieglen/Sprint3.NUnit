@@ -47,6 +47,12 @@ namespace MarsFramework.Pages.ProfilePages
             SelectElement selectHours = new SelectElement(AvailabilityHoursOpt);
             selectHours.SelectByText(hours);
             wait(30);
+
+            Thread.Sleep(1000);
+            driver.Navigate().Refresh();
+            Thread.Sleep(1000);
+
+            WaitToBeVisible(driver, "XPath", "(//SPAN)[12]", 50);           
             hoursValue = CurrentHours.Text;
         }
 

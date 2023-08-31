@@ -44,6 +44,7 @@ namespace MarsFramework.Tests.ProfilePageTests
 
                 // Log status in Extentreports
                 test.Log(Status.Pass, "Passed, Availability successfully selected.");
+                test.Log(Status.Info, "Availability Selected " + result);
             }
             catch (Exception ex)
             {

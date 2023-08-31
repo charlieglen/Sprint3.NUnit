@@ -47,9 +47,14 @@ namespace MarsFramework.Pages.ProfilePages
             SelectElement selectAvailability = new SelectElement(AvailabilityTimeOpt);
             selectAvailability.SelectByText(availability);
             wait(30);
+
+            Thread.Sleep(1000);
+            driver.Navigate().Refresh();
+            Thread.Sleep(1000);
+           
+            WaitToBeVisible(driver, "XPath", "(//SPAN)[10]", 50);            
             availability = CurrentAvailability.Text;
         }
-
         public string GetAvailabilityValue()
         {
             return availability;
