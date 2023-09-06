@@ -85,6 +85,7 @@ namespace MarsFramework.Pages.ProfilePages
                     CancelLanguageBtn.Click();
             }
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 
@@ -121,7 +122,7 @@ namespace MarsFramework.Pages.ProfilePages
                 CancelLanguageBtn.Click();
 
             wait(30);
-
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 
@@ -136,6 +137,7 @@ namespace MarsFramework.Pages.ProfilePages
             LanguageToDelete.Click();
 
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 

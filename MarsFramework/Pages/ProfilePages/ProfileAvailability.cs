@@ -31,7 +31,7 @@ namespace MarsFramework.Pages.ProfilePages
         #endregion
 
         private string notificationMessage = "";
-        private string availability = "";
+        private string availabilityValue = "";
 
         public string GetNotificationMessage()
         {
@@ -53,11 +53,11 @@ namespace MarsFramework.Pages.ProfilePages
             Thread.Sleep(1000);
            
             WaitToBeVisible(driver, "XPath", "(//SPAN)[10]", 50);            
-            availability = CurrentAvailability.Text;
+            availabilityValue = CurrentAvailability.Text;
         }
         public string GetAvailabilityValue()
         {
-            return availability;
+            return availabilityValue;
         }
     }
 }

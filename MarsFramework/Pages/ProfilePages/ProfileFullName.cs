@@ -76,7 +76,6 @@ namespace MarsFramework.Pages.ProfilePages
 
             if (fullNameValue == fullName)
             {
-                test.Log(Status.Pass, "Full Name successfully updated to " + fullNameValue);
                 test.Log(Status.Info, "Full Name successfully updated to " + fullNameValue);
                 Assert.That(FullName.Text == fullName, "Full Name not updated");
             }

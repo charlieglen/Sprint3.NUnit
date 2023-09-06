@@ -77,21 +77,25 @@ namespace MarsFramework.Pages.ProfilePages
                 wait(30);
                 CertifiedFrom.SendKeys(certFrom);
 
-                //Enter the Year Certified
-                wait(30);
-                YearCertified.Click();
-                wait(30);
-                SelectElement selectedYear = new SelectElement(YearCertified);
-                selectedYear.SelectByValue(yearCert);
+                if (yearCert != "")
+                {
+                    //Enter the Year Certified
+                    wait(30);
+                    YearCertified.Click();
+                    wait(30);
+                    SelectElement selectedYear = new SelectElement(YearCertified);
+                    selectedYear.SelectByValue(yearCert);
+                }
 
                 //Click action
-                wait(30);
+                wait(50);
                 if (action == "Save")
                     SaveCertificateBtn.Click();
                 else
                     CancelCertificateBtn.Click();
             }
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 
@@ -121,21 +125,25 @@ namespace MarsFramework.Pages.ProfilePages
             wait(30);
             CertifiedFrom.SendKeys(certFrom);
 
-            //Enter the Year Certified
-            wait(30);
-            YearCertified.Click();
-            wait(30);
-            SelectElement selectedYear = new SelectElement(YearCertified);
-            selectedYear.SelectByValue(yearCert);
+            if (yearCert != "")
+            {
+                //Enter the Year Certified
+                wait(30);
+                YearCertified.Click();
+                wait(30);
+                SelectElement selectedYear = new SelectElement(YearCertified);
+                selectedYear.SelectByValue(yearCert);
+            }
 
             //Click action
-            wait(30);
+            wait(50);
             if (action == "Save")
                 SaveCertificateBtn.Click();
             else
                 CancelCertificateBtn.Click();
 
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 
@@ -150,6 +158,7 @@ namespace MarsFramework.Pages.ProfilePages
             CertificateToDelete.Click();
 
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 

@@ -83,6 +83,7 @@ namespace MarsFramework.Pages.ProfilePages
             }
 
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 
@@ -119,6 +120,7 @@ namespace MarsFramework.Pages.ProfilePages
                 CancelSkillBtn.Click();
 
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 
@@ -133,6 +135,7 @@ namespace MarsFramework.Pages.ProfilePages
             SkillToDelete.Click();
 
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 

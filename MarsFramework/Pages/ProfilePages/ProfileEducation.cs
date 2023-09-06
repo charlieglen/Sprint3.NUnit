@@ -78,30 +78,39 @@ namespace MarsFramework.Pages.ProfilePages
                 //Enter the University
                 EnterUniversityName.SendKeys(university);
 
-                //Choose Country
-                wait(30);
-                ChooseCountryBtn.Click();
-                wait(500);
-                SelectElement selectedCountry = new SelectElement(ChooseCountryBtn);
-                selectedCountry.SelectByValue(country);
+                if (country != "")
+                {
+                    //Choose Country
+                    wait(30);
+                    ChooseCountryBtn.Click();
+                    wait(500);
+                    SelectElement selectedCountry = new SelectElement(ChooseCountryBtn);
+                    selectedCountry.SelectByValue(country);
+                }
 
-                //Choose Title
-                wait(30);
-                ChooseTitleBtn.Click();
-                wait(50);
-                SelectElement selectedTitle = new SelectElement(ChooseTitleBtn);
-                selectedTitle.SelectByValue(title);
+                if (title != "")
+                {
+                    //Choose Title
+                    wait(30);
+                    ChooseTitleBtn.Click();
+                    wait(50);
+                    SelectElement selectedTitle = new SelectElement(ChooseTitleBtn);
+                    selectedTitle.SelectByValue(title);
+                }
 
                 //Enter Degree
                 wait(30);
                 Degree.SendKeys(degree);
 
-                //Year of Graduation
-                wait(30);
-                DegreeYear.Click();
-                wait(30);
-                SelectElement selectedYear = new SelectElement(DegreeYear);
-                selectedYear.SelectByValue(degreeYear);
+                if (degreeYear != "")
+                {
+                    //Year of Graduation
+                    wait(30);
+                    DegreeYear.Click();
+                    wait(30);
+                    SelectElement selectedYear = new SelectElement(DegreeYear);
+                    selectedYear.SelectByValue(degreeYear);
+                }
 
                 //Click action
                 wait(30);
@@ -111,6 +120,7 @@ namespace MarsFramework.Pages.ProfilePages
                     CancelEducationBtn.Click();
             }
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 
@@ -132,20 +142,25 @@ namespace MarsFramework.Pages.ProfilePages
             //Enter the University
             EnterUniversityName.SendKeys(university);
 
-            //Choose Country
-            Wait.WaitToBeClickable("XPath", "(//SELECT[@class='ui fluid dropdown'])[1]", 100);
-            ChooseCountryBtn.Click();
-            wait(500);
-            SelectElement selectedCountry = new SelectElement(ChooseCountryBtn);
-            selectedCountry.SelectByValue(country);
+            if (country != "")
+            {
+                //Choose Country
+                Wait.WaitToBeClickable("XPath", "(//SELECT[@class='ui fluid dropdown'])[1]", 100);
+                ChooseCountryBtn.Click();
+                wait(500);
+                SelectElement selectedCountry = new SelectElement(ChooseCountryBtn);
+                selectedCountry.SelectByValue(country);
+            }
 
-            //Choose Title
-            wait(30);
-            ChooseTitleBtn.Click();
-            wait(50);
-            SelectElement selectedTitle = new SelectElement(ChooseTitleBtn);
-            selectedTitle.SelectByValue(title);
-
+            if (title != "")
+            {
+                //Choose Title
+                wait(30);
+                ChooseTitleBtn.Click();
+                wait(50);
+                SelectElement selectedTitle = new SelectElement(ChooseTitleBtn);
+                selectedTitle.SelectByValue(title);
+            }
             //Clear the Degree Value
             wait(30);
             Degree.Clear();
@@ -154,12 +169,15 @@ namespace MarsFramework.Pages.ProfilePages
             wait(30);
             Degree.SendKeys(degree);
 
-            //Year of Graduation
-            wait(30);
-            DegreeYear.Click();
-            wait(30);
-            SelectElement selectedYear = new SelectElement(DegreeYear);
-            selectedYear.SelectByValue(degreeYear);
+            if (degreeYear != "")
+            {
+                //Year of Graduation
+                wait(30);
+                DegreeYear.Click();
+                wait(30);
+                SelectElement selectedYear = new SelectElement(DegreeYear);
+                selectedYear.SelectByValue(degreeYear);
+            }
 
             //Click action
             wait(30);
@@ -169,6 +187,7 @@ namespace MarsFramework.Pages.ProfilePages
                 CancelEducationBtn.Click();
 
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 
@@ -183,6 +202,7 @@ namespace MarsFramework.Pages.ProfilePages
             EducationToDelete.Click();
 
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 

@@ -42,7 +42,8 @@ namespace MarsFramework.Pages.ProfilePages
 
         public void AddDescription(string description)
         {
-            wait(30);
+            //wait(30);
+            WaitToBeVisible(driver, "XPath", "(//I[@class='outline write icon'])[1]", 100); 
             EditProfileDescription.Click();
             wait(30);
             DescriptionTextArea.Click();
@@ -53,6 +54,7 @@ namespace MarsFramework.Pages.ProfilePages
             SaveDescription.Click();
 
             wait(30);
+            WaitToBeVisible(driver, "XPath", "//div[@class=\"ns-box-inner\"]", 50);
             notificationMessage = NotificationMesssage.Text;
         }
 
