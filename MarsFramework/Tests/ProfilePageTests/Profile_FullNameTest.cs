@@ -7,9 +7,11 @@ namespace MarsFramework.Tests.ProfilePageTests
 {
     public class Profile_FullNameTest : Base
     {
-        [Test(Description = "Check if user is able to update name using valid Inputs")]
+        [Test, Order(1)]
         public void EditProfileFullName()
         {
+            //Description = "Check if user is able to update name using valid Inputs"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 

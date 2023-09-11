@@ -11,9 +11,11 @@ namespace MarsFramework.Tests.ProfilePageTests
 {
     public class Profile_CertificationsTest : Base
     {
-        [Test(Description = "Check if user is able to add new Certificate with valid data--> ISTQB, ANZTB, 2021")]
+        [Test, Order(1)]
         public void AddNewCertificateWithValidData()
         {
+            //Description = "Check if user is able to add new Certificate with valid data--> ISTQB, ANZTB, 2021"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -21,9 +23,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddCertificateInput(2);
         }
 
-        [Test(Description = "Check if user is able to add duplicate Certificate--> ISTQB, ANZTB, 2021")]
+        [Test, Order(2)]
         public void AddDuplicateCertificateName()
         {
+            //(Description = "Check if user is able to add duplicate Certificate--> ISTQB, ANZTB, 2021" 
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -31,9 +35,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddCertificateInput(2);
         }
 
-        [Test(Description = "Check if user is able to add Certificate Name all in special characters--> ~`!@#$%^&*()_+-={}|[]\\:\";'<>?,./ ")]
+        [Test, Order(3)]
         public void AddCertificateNameInSpecialCharacters()
         {
+            //Description = "Check if user is able to add Certificate Name all in special characters--> ~`!@#$%^&*()_+-={}|[]\\:\";'<>?,./ "
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -41,9 +47,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddCertificateInput(3);
         }
 
-        [Test(Description = "Check if user is able to add Certificate with no provider")]
+        [Test, Order(4)]
         public void AddCertificateWithOutProvider()
         {
+            //Description = "Check if user is able to add Certificate with no provider"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -51,9 +59,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddCertificateInput(4);
         }
 
-        [Test(Description = "Check if user is able to add empty Certificate Name")]
+        [Test, Order(5)]
         public void AddCertificateNameEmpty()
         {
+            //Description = "Check if user is able to add empty Certificate Name"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -61,9 +71,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddCertificateInput(5);
         }
 
-        [Test(Description = "Check if user is able to add Certificate with No Year Certified ")]
+        [Test, Order(6)]
         public void AddCertificateNoYear()
         {
+            //Description = "Check if user is able to add Certificate with No Year Certified "
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -71,9 +83,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddCertificateInput(6);
         }
 
-        [Test(Description = "Check if user is able to add Certificate All Required fields empty ")]
+        [Test, Order(7)]
         public void AddCertificateAllFieldsEmpty()
         {
+            //Description = "Check if user is able to add Certificate All Required fields empty "
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -81,9 +95,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddCertificateInput(7);
         }
 
-        [Test(Description = "Check if user is able to update an existing Certificate with valid data--> Updated Certificate")]
+        [Test, Order(8)]
         public void EditCertificateWithValidData()
         {
+            //Description = "Check if user is able to update an existing Certificate with valid data--> Updated Certificate"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 

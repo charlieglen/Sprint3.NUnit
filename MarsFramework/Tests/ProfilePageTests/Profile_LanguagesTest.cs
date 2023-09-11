@@ -10,9 +10,11 @@ namespace MarsFramework.Tests.ProfilePageTests
 {
     public class Profile_LanguagesTest : Base
     {
-        [Test(Description = "Check if user is able to add new language with valid data--> English")]
+        [Test, Order(1)]
         public void AddNewLanguageWithValidData()
         {
+            //Description = "Check if user is able to add new language with valid data--> English"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -20,9 +22,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpandValidateAddLanguageInput(2);
         }
 
-        [Test(Description = "Check if user is able to add duplicate language--> English")]
+        [Test, Order(2)]
         public void AddDuplicateLanguage()
         {
+            //Description = "Check if user is able to add duplicate language--> English"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -30,9 +34,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpandValidateAddLanguageInput(2);
         }
 
-        [Test(Description = "Check if user is able to add language all in special characters--> ~`!@#$%^&*()_+-={}|[]\\:\";'<>?,./ ")]
+        [Test, Order(3)]
         public void AddLanguageInSpecialCharacters()
         {
+            //Description = "Check if user is able to add language all in special characters--> ~`!@#$%^&*()_+-={}|[]\\:\";'<>?,./ "
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -40,9 +46,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpandValidateAddLanguageInput(3);
         }
 
-        [Test(Description = "Check if user is able to add language with no language level selected")]
+        [Test, Order(4)]
         public void AddLanguageWithOutLevel()
         {
+            //Description = "Check if user is able to add language with no language level selected"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -50,9 +58,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpandValidateAddLanguageInput(4);
         }
 
-        [Test(Description = "Check if user is able to add empty language name")]
+        [Test, Order(5)]
         public void AddLanguageEmptyLanguageName()
         {
+            //Description = "Check if user is able to add empty language name"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -60,9 +70,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpandValidateAddLanguageInput(6);
         }
 
-        [Test(Description = "Check if user is able to update an existing language with valid data--> Updated Language")]
+        [Test, Order(6)]
         public void EditLanguageWithValidData()
         {
+            //Description = "Check if user is able to update an existing language with valid data--> Updated Language"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -70,10 +82,12 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpandValidateEditLanguage(10);
         }
 
-        [Test(Description = "Check if user is able to delete an existing language --> First Row in the list")]
+        [Test, Order(7)]
 
         public void DeleteExistingLanguage()
         {
+            //Description = "Check if user is able to delete an existing language --> First Row in the list"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 

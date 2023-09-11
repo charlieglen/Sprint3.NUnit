@@ -10,9 +10,11 @@ namespace MarsFramework.Tests.ProfilePageTests
 {
     public class Profile_HoursTest : Base
     {
-        [Test(Description = "Check if user is able to assign initial Hours as - Less than 30hours a week")]
+        [Test, Order(1)]
         public void SelectHours()
         {
+            //Description = "Check if user is able to assign initial Hours as - Less than 30hours a week"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -20,9 +22,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateHoursSelected(2);
         }
 
-        [Test(Description = "Check if user is able to update current Hours as - As needed")]
+        [Test, Order(2)]
         public void EditHours()
         {
+            //Description = "Check if user is able to update current Hours as - As needed"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 

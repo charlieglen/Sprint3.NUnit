@@ -9,9 +9,11 @@ namespace MarsFramework.Tests.ProfilePageTests
 {
     public class Profile_AvailabilityTest : Base
     {
-        [Test(Description = "Check if user is able to assign initial Availability as Full Time")]
+        [Test, Order(1)]
         public void SelectAvailability()
         {
+            //Description = "Check if user is able to assign initial Availability as Full Time"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -19,9 +21,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAvailabiltyselected(2);
         }
 
-        [Test(Description = "Check if user is able to update Availability as Part Time")]
+        [Test, Order(2)]
         public void EditAvailability()
         {
+            //Description = "Check if user is able to update Availability as Part Time"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 

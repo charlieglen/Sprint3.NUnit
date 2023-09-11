@@ -9,9 +9,11 @@ namespace MarsFramework.Tests.ProfilePageTests
 {
     public class Profile_DescriptionTest : Base
     {
-        [Test(Description = "Valid Description Input, starts with a digit or letter, Less than or equal to 600 characters")]
+        [Test, Order(1)]
         public void AddDescription()
         {
+            //Description = "Valid Description Input, starts with a digit or letter, Less than or equal to 600 characters"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -19,9 +21,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddProfileDecription(2);
         }
 
-        [Test(Description = "InValid Length of Input, More than 600 characters")]
+        [Test, Order(2)]
         public void EditDescriptionMoreThanMaxLength()
         {
+            //Description = "InValid Length of Input, More than 600 characters"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -29,9 +33,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddProfileDecription(3);
         }
 
-        [Test(Description = "Invalid Input, All invalid characters = !@#$%^&*()_+<>,.?~`")]
+        [Test, Order(3)]
         public void EditDescriptionInvalidCharacters()
         {
+            //Description = "Invalid Input, All invalid characters = !@#$%^&*()_+<>,.?~`"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -39,9 +45,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddProfileDecription(4);
         }
 
-        [Test(Description = "Input starts with a space")]
+        [Test, Order(4)]
         public void EditDescriptionStartsWithASpace()
         {
+            //Description = "Input starts with a space"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -49,9 +57,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddProfileDecription(5);
         }
 
-        [Test(Description = "Heaps of unwanted spaces after a valid text. Total of 236 characters including spaces")]
+        [Test, Order(5)]
         public void EditDescriptionExtraSpacesAfterValidInput()
         {
+            //Description = "Heaps of unwanted spaces after a valid text. Total of 236 characters including spaces"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -59,9 +69,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddProfileDecription(6);
         }
 
-        [Test(Description = "Empty Text")]
+        [Test, Order(6)]
         public void EditDescriptionEmptyText()
         {
+            //Description = "Empty Text"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 

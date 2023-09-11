@@ -9,9 +9,11 @@ namespace MarsFramework.Tests.ProfilePageTests
 {
     public class Profile_EarnTargetTest : Base
     {
-        [Test(Description = "Check if user is able to assign initial Salary as - Less than $500 per month")]
+        [Test, Order(1)]
         public void SelectEarnTarget()
         {
+            //Description = "Check if user is able to assign initial Salary as - Less than $500 per month"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -19,9 +21,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateEarnTargetSelected(2);
         }
        
-        [Test(Description = "Check if user is able to update current Salary as - More than $1000 per month")]
+        [Test, Order(2)]
         public void EditEarnTarget()
         {
+            //Description = "Check if user is able to update current Salary as - More than $1000 per month"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 

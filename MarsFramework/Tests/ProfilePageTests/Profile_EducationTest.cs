@@ -15,9 +15,11 @@ namespace MarsFramework.Tests.ProfilePageTests
 {
     public class Profile_EducationTest : Base
     {
-        [Test(Description = "Check if user is able to add new Education with valid data--> all required fields")]
+        [Test, Order(1)]
         public void AddNewEducationWithValidData()
         {
+            //Description = "Check if user is able to add new Education with valid data--> all required fields"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -25,9 +27,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddEducationInput(2);
         }
 
-        [Test(Description = "Check if user is able to add duplicate Education --> all required fields")]
+        [Test, Order(2)]
         public void AddDuplicateEducation()
         {
+            //Description = "Check if user is able to add duplicate Education --> all required fields"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -35,9 +39,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddEducationInput(2);
         }
 
-        [Test(Description = "Check if user is able to add Education all input boxes in special characters--> ~`!@#$%^&*()_+-={}|[]\\:\";'<>?,./ ")]
+        [Test, Order(3)]
         public void AddEducationInSpecialCharacters()
         {
+            //Description = "Check if user is able to add Education all input boxes in special characters--> ~`!@#$%^&*()_+-={}|[]\\:\";'<>?,./ "
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -45,9 +51,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddEducationInput(3);
         }
 
-        [Test(Description = "Check if user is able to add Education with No University")]
+        [Test, Order(4)]
         public void AddEducationWithMissingUniversity()
         {
+            //Description = "Check if user is able to add Education with No University"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -55,9 +63,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddEducationInput(4);
         }
 
-        [Test(Description = "Check if user is able to add Education with No Country")]
+        [Test, Order(5)]
         public void AddEducationWithMissingCountryOfUniversity()
         {
+            //Description = "Check if user is able to add Education with No Country"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -65,9 +75,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddEducationInput(5);
         }
 
-        [Test(Description = "Check if user is able to add Education with No Title")]
+        [Test, Order(6)]
         public void AddEducationWithMissingTitle()
         {
+            //Description = "Check if user is able to add Education with No Title"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -75,9 +87,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddEducationInput(6);
         }
 
-        [Test(Description = "Check if user is able to add Education with No Degree")]
+        [Test, Order(7)]
         public void AddEducationWithMissingDegree()
         {
+            //Description = "Check if user is able to add Education with No Degree"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -85,27 +99,33 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddEducationInput(7);
         }
 
-        [Test(Description = "Check if user is able to add Education with No Year of Graduation")]
+        [Test, Order(8)]
         public void AddEducationWithNoYearGraduated()
         {
+            //Description = "Check if user is able to add Education with No Year of Graduation"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
             //Set up and validate add new Education Input
             SetUpAndValidateAddEducationInput(8);
         }
 
-        [Test(Description = "Check if user is able to add Education with No Inputs")]
+        [Test, Order(9)]
         public void AddEducationWithNoInputs()
         {
+            //Description = "Check if user is able to add Education with No Inputs"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
             //Set up and validate add new Education Input
             SetUpAndValidateAddEducationInput(9);
         }
 
-        [Test(Description = "Check if user is able to update an existing Education with valid input data--> Updated Skill")]
+        [Test, Order(10)]
         public void EditEducationlWithValidData()
         {
+            //Description = "Check if user is able to update an existing Education with valid input data--> Updated Skill"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
             //Set up and validate add new Education Input
@@ -113,10 +133,12 @@ namespace MarsFramework.Tests.ProfilePageTests
         }
 
 
-        [Test(Description = "Check if user is able to delete an existing Education --> First Row in the list")]
+        [Test, Order(11)]
 
         public void DeleteExistingEducation()
         {
+            //Description = "Check if user is able to delete an existing Education --> First Row in the list"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
             SetUpAndValidateDeleteExistingEducation();

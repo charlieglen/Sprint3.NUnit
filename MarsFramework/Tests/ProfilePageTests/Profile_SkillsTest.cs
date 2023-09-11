@@ -10,9 +10,11 @@ namespace MarsFramework.Tests.ProfilePageTests
 {
     public class Profile_SkillsTest : Base
     {
-        [Test(Description = "Check if user is able to add new Skill with valid data--> Automation Testing")]
+        [Test, Order(1)]
         public void AddNewSkillWithValidData()
         {
+            //Description = "Check if user is able to add new Skill with valid data--> Automation Testing"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -21,9 +23,11 @@ namespace MarsFramework.Tests.ProfilePageTests
         }
 
 
-        [Test(Description = "Check if user is able to add duplicate Skill--> Automation Testing")]
+        [Test, Order(2)]
         public void AddDuplicateSkill()
         {
+            //Description = "Check if user is able to add duplicate Skill--> Automation Testing"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -31,9 +35,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddSkillInput(2);
         }
 
-        [Test(Description = "Check if user is able to add Skill all in special characters--> ~`!@#$%^&*()_+-={}|[]\\:\";'<>?,./ ")]
+        [Test, Order(3)]
         public void AddSkillInSpecialCharacters()
         {
+            //Description = "Check if user is able to add Skill all in special characters--> ~`!@#$%^&*()_+-={}|[]\\:\";'<>?,./ "
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -41,9 +47,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddSkillInput(3);
         }
 
-        [Test(Description = "Check if user is able to add Skill with no Skill level selected")]
+        [Test, Order(4)]
         public void AddSkillWithOutLevel()
         {
+            //Description = "Check if user is able to add Skill with no Skill level selected"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -51,9 +59,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddSkillInput(4);
         }
 
-        [Test(Description = "Check if user is able to add empty text for Skill")]
+        [Test, Order(5)]
         public void AddSkillEmptyText()
         {
+            //Description = "Check if user is able to add empty text for Skill"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -61,9 +71,11 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateAddSkillInput(5);
         }
 
-        [Test(Description = "Check if user is able to update an existing Skill with valid data--> Updated Skill")]
+        [Test, Order(6)]
         public void EditSkillWithValidData()
         {
+            //Description = "Check if user is able to update an existing Skill with valid data--> Updated Skill"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
@@ -71,10 +83,12 @@ namespace MarsFramework.Tests.ProfilePageTests
             SetUpAndValidateEditSkill(10);
         }
 
-        [Test(Description = "Check if user is able to delete an existing Skill --> First Row in the list")]
+        [Test, Order(7)]
 
         public void DeleteExistingSkill()
         {
+            //Description = "Check if user is able to delete an existing Skill --> First Row in the list"
+
             //Create Extent Report
             test = extent.CreateTest(MethodBase.GetCurrentMethod()!.Name);
 
