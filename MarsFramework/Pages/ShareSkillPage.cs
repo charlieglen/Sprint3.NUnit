@@ -199,7 +199,7 @@ namespace MarsFramework.Pages
             AutoItX3 autoIT = new AutoItX3();
             autoIT.WinActivate("Open");
             Task.Delay(1000).Wait();
-            autoIT.Send(@"D:\Industry Connect\Internship\Tasks\Sprint3.NUnit\MarsFramework\MarsFramework\AutoIT\WorkSamples\" + ExcelLib.ReadData(testRow, "Work Sample"));
+            autoIT.Send(@"C:\Users\Sheila\source\repos\Advanced\Sprint3.NUnit\MarsFramework\AutoIT\WorkSamples\" + ExcelLib.ReadData(testRow, "Work Sample"));
             autoIT.Send("{ENTER}");
         }
 

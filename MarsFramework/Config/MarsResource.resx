@@ -118,16 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ExcelPath" xml:space="preserve">
-    <value>D:\Industry Connect\Internship\Tasks\Sprint3.NUnit\MarsFramework\MarsFramework\ExcelData\ExcelData.xlsx</value>
+    <value>C:\Users\Sheila\source\repos\Advanced\Sprint3.NUnit\MarsFramework\ExcelData\ExcelData.xlsx</value>
   </data>
   <data name="ReportPath" xml:space="preserve">
-    <value>D:\Industry Connect\Internship\Tasks\Sprint3.NUnit\MarsFramework\MarsFramework\TestReports\Reports\</value>
+    <value>C:\Users\Sheila\source\repos\Advanced\Sprint3.NUnit\MarsFramework\TestReports\Reports\</value>
   </data>
   <data name="ReportXMLPath" xml:space="preserve">
-    <value>D:\Industry Connect\Internship\Tasks\Sprint3.NUnit\MarsFramework\MarsFramework\Config\XMLFile.xml</value>
+    <value>C:\Users\Sheila\source\repos\Advanced\Sprint3.NUnit\MarsFramework\Config\XMLFile.xml</value>
   </data>
   <data name="ScreenShotPath" xml:space="preserve">
-    <value>D:\Industry Connect\Internship\Tasks\Sprint3.NUnit\MarsFramework\MarsFramework\TestReports\Screenshots\</value>
+    <value>C:\Users\Sheila\source\repos\Advanced\Sprint3.NUnit\MarsFramework\TestReports\Screenshots\</value>
   </data>
   <data name="testRow" xml:space="preserve">
     <value>2</value>

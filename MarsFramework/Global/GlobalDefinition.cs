@@ -17,6 +17,11 @@ namespace MarsFramework.Global
         #region WaitforElement 
         public class Wait
         {
+            public static void wait(int time)
+            {
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(time);
+
+            }
             public static void WaitToBeVisible(IWebDriver driver, string locatorType, string locatorValue, int seconds)
             {
                 var wait = new WebDriverWait(driver, new TimeSpan(0, 0, seconds));
@@ -35,12 +40,30 @@ namespace MarsFramework.Global
                 }
 
             }
+            public static void WaitToBeClickable(string locatorType, string locatorValue, int seconds)
+            {
+                var wait = new WebDriverWait(driver, new TimeSpan(0, 0, seconds));
+
+                if (locatorType == "XPath")
+                {
+                    wait.Until(ExpectedConditions.ElementToBeClickable(By.XPath(locatorValue)));
+                }
+                if (locatorType == "Id")
+                {
+                    wait.Until(ExpectedConditions.ElementToBeClickable(By.Id(locatorValue)));
+                }
+                if (locatorType == "CssSelector")
+                {
+                    wait.Until(ExpectedConditions.ElementToBeClickable(By.CssSelector(locatorValue)));
+                }
+
+            }
         }
             #endregion
 
             #region Excel 
 
-            public class ExcelLib
+        public class ExcelLib
         {
             //Creating the collection we will use to store data 
             static List<Datacollection> dataCol = new List<Datacollection>();

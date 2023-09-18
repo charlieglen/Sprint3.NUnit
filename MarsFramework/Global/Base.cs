@@ -32,9 +32,15 @@ namespace MarsFramework.Global
             extent.AttachReporter(htmlReporter);
 
             driver = new ChromeDriver();
+
+            //var options = new ChromeOptions();
+            //driver = new ChromeDriver(ChromeDriverService.CreateDefaultService(), options, TimeSpan.FromMinutes(3));
+            //options.AddArgument("no-sandbox");
             driver.Manage().Window.Maximize();
-            driver.Navigate().GoToUrl(ExcelLib.ReadData(2, "Link"));
-            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            //driver.Navigate().GoToUrl(ExcelLib.ReadData(2, "Link"));
+            driver.Navigate().GoToUrl("http://localhost:5000/");
+            //driver.Manage().Timeouts().PageLoad.Add(System.TimeSpan.FromSeconds(30));
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(100);
 
             LoginPage loginobj = new LoginPage();
             loginobj.LogInActions();
